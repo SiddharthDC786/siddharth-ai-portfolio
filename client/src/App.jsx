@@ -10,12 +10,14 @@ import ChatAssistant from './components/ChatAssistant'
 import Architecture from './components/Architecture'
 import Profiles from './components/Profiles'
 import Footer from './components/Footer'
+import MotionEffects from './components/MotionEffects'
 
 function App() {
   const [tourOpen, setTourOpen] = useState(false)
 
   return (
     <div className="app-shell">
+      <MotionEffects />
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <Navbar />
