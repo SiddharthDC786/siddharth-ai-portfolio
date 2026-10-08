@@ -10,6 +10,7 @@ export default function Navbar() {
         </a>
         <div className="nav-links">
           <a href="#about">About</a>
+          <a href="#current-focus">Currently</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#ask">Ask AI</a>

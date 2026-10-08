@@ -6,14 +6,80 @@ export const profile = {
   course: 'B.Tech - Artificial Intelligence & Machine Learning',
   year: '2nd Year, 1st Semester',
   intro:
-    'I am a second-year AIML student using college to explore where I can do my best work. Instead of locking myself into one title too early, I am building across full-stack development, DSA and applied AI/ML, then using each project to understand what I enjoy and where I need to improve.',
+    'I am a second-year AIML student at VNRVJIET who is deliberately using college to explore where I can do my best work. I am currently undergoing MERN Stack training through college, strengthening C++ and DSA, and building across full-stack development and applied AI/ML instead of choosing a specialization only from theory.',
   philosophy: 'Explore widely. Build consistently. Choose with clarity.',
   heroLine: 'Still exploring. Already building.',
+  collegeTraining: {
+    title: 'MERN Stack Training',
+    provider: 'VNRVJIET',
+    summary: 'College-provided full-stack training covering React, Node.js, Express, MongoDB and the flow between frontend, backend and database layers.'
+  },
+  aboutDetails: [
+    {
+      label: 'WHO I AM',
+      title: 'A student still choosing his strongest lane',
+      text: 'I do not want to force myself into a title like AI Engineer or Full-stack Developer too early. I would rather build enough real projects to understand what I enjoy, what I am good at and where I want to go deeper.'
+    },
+    {
+      label: 'HOW I LEARN',
+      title: 'I understand things better when I build them',
+      text: 'Projects make me connect the pieces: UI, APIs, databases, authentication, data quality, model integration and failure cases. I try to understand why a tool is being used, not only the syntax needed to make it run.'
+    },
+    {
+      label: 'WHAT I WANT',
+      title: 'A strong technical base before specialization',
+      text: 'My goal during college is to become technically strong enough to earn a role at a great company and choose a specialization based on evidence from what I have actually built and enjoyed.'
+    }
+  ],
+  currentFocus: [
+    {
+      index: '01',
+      title: 'MERN Stack Training @ VNRVJIET',
+      text: 'Learning full-stack development through college training: React, Node.js, Express, MongoDB, REST APIs and frontend-backend integration.',
+      tags: ['React', 'Node.js', 'Express', 'MongoDB']
+    },
+    {
+      index: '02',
+      title: 'DSA + C++',
+      text: 'Strengthening problem-solving fundamentals and getting more comfortable with C++ through coding practice and LeetCode.',
+      tags: ['C++', 'DSA', 'LeetCode']
+    },
+    {
+      index: '03',
+      title: 'AI / Data Exploration',
+      text: 'Using projects to understand whether I want to go deeper into AI engineering, data engineering or backend-oriented systems.',
+      tags: ['AI Engineering', 'Data Engineering', 'Backend']
+    }
+  ],
+  learningLoop: ['Learn', 'Build', 'Break', 'Improve', 'Explain'],
+  journey: [
+    {
+      label: 'FOUNDATIONS',
+      title: 'Programming + problem solving',
+      text: 'Built foundations in C and Python, then started strengthening DSA and C++.'
+    },
+    {
+      label: 'FULL-STACK',
+      title: 'College MERN Stack training',
+      text: 'Currently learning how React, Node.js, Express and MongoDB work together in complete applications.'
+    },
+    {
+      label: 'APPLIED AI',
+      title: 'From CNNs to graph-based systems',
+      text: 'Worked on computer-vision and investigation-oriented projects to see how AI fits into real product workflows.'
+    },
+    {
+      label: 'NOW',
+      title: 'Building range before choosing depth',
+      text: 'Continuing DSA, full-stack and AI/data exploration so I can specialize with more clarity later.'
+    }
+  ],
   skills: {
     Frontend: ['React', 'Vite', 'HTML', 'CSS', 'JavaScript', 'Tailwind'],
     'Full Stack': ['MERN Stack', 'Node.js', 'Express', 'MongoDB'],
     Programming: ['C', 'C++', 'Python'],
     'Problem Solving': ['DSA', 'LeetCode'],
+    'Current Training': ['VNRVJIET MERN Stack Training'],
     'Project Exposure': ['FastAPI', 'PostgreSQL', 'TensorFlow / Keras', 'CNN / Streamlit', 'NLP concepts', 'Neo4j', 'Graph analytics'],
     'Currently Exploring': ['AI Engineering', 'Data Engineering', 'Better full-stack architecture']
   },
@@ -119,9 +185,9 @@ export const profile = {
       learned:
         'AI integration is stronger when the product handles grounding, failure states and user experience instead of treating the model as a magic text box.',
       tech: ['React', 'Vite', 'Node.js', 'Express', 'Gemini API'],
-      github: 'https://github.com/SiddharthDC786',
-      proof: 'https://github.com/SiddharthDC786',
-      proofLabel: 'GitHub Profile',
+      github: 'https://github.com/SiddharthDC786/siddharth-ai-portfolio',
+      proof: 'https://github.com/SiddharthDC786/siddharth-ai-portfolio',
+      proofLabel: 'Portfolio Repository',
       live: ''
     }
   ],

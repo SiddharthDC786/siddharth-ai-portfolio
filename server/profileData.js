@@ -1,11 +1,18 @@
 export const profile = {
   name: 'DC Siddharth',
   education: 'B.Tech Artificial Intelligence & Machine Learning, VNRVJIET, 2nd Year 1st Semester',
-  about: 'Siddharth is a second-year AIML student building a broad technical foundation through full-stack development, DSA and hands-on AI/ML projects. He is deliberately exploring possible directions such as AI engineering and data engineering before choosing a specialization.',
+  about: 'Siddharth is a second-year AIML student at VNRVJIET. He is deliberately exploring full-stack development, DSA and applied AI/ML before choosing one specialization. He prefers learning through projects and wants to build a strong technical base before deciding where to go deeper.',
   philosophy: 'Explore widely. Build consistently. Choose with clarity.',
+  currentTraining: {
+    name: 'VNRVJIET MERN Stack Training',
+    topics: ['React', 'Node.js', 'Express', 'MongoDB', 'REST APIs', 'Frontend-backend integration']
+  },
+  currentFocus: ['MERN Stack', 'C++', 'DSA', 'LeetCode', 'AI Engineering exploration', 'Data Engineering exploration', 'Backend systems'],
+  learningStyle: 'Learn → Build → Break → Improve → Explain. Siddharth learns best by building and tries to understand why a technology is used, not only how to copy its syntax.',
   skills: ['React', 'Vite', 'MERN Stack', 'Node.js', 'Express', 'MongoDB', 'DSA', 'C', 'C++', 'Python', 'JavaScript', 'Tailwind'],
   projectExposure: ['FastAPI', 'PostgreSQL', 'TensorFlow/Keras', 'CNN/Streamlit', 'NLP concepts', 'Neo4j', 'Graph analytics'],
-  interests: ['AI Engineering', 'Data Engineering', 'Full-stack Development', 'DSA', 'Applied Machine Learning'],
+  interests: ['AI Engineering', 'Data Engineering', 'Full-stack Development', 'Backend Systems', 'DSA', 'Applied Machine Learning'],
+  careerDirection: 'Siddharth has not locked himself into one job title yet. He wants to build enough practical experience during college to choose a specialization based on what he has actually built and enjoyed, while aiming for a strong role at a good company.',
   projects: [
     {
       name: 'Vigil / investigation-ai',
@@ -36,7 +43,8 @@ export const profile = {
       name: 'AI Portfolio Assistant',
       ownership: 'Personal project',
       description: 'A React/Vite portfolio connected to a Node/Express AI backend. The assistant answers profile-specific questions, provides proof links for selected technical claims and uses local fallbacks for common demo questions.',
-      technologies: ['React', 'Vite', 'Node.js', 'Express', 'Gemini API']
+      technologies: ['React', 'Vite', 'Node.js', 'Express', 'Gemini API'],
+      url: 'https://github.com/SiddharthDC786/siddharth-ai-portfolio'
     },
     {
       name: 'ParaDetect-AI',
