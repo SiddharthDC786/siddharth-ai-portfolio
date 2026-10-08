@@ -35,7 +35,7 @@ const localAnswer = (question) => {
   if (q.includes('leetcode') || q.includes('coding profile')) return `Siddharth practices DSA on LeetCode while strengthening his C++ fundamentals. You can open his coding profile from the action card below.`
   if (q.includes('github')) return `Siddharth's GitHub is github.com/SiddharthDC786.`
   if (q.includes('goal') || q.includes('career') || q.includes('future')) return `He wants to build a strong technical base during college, earn a role at a strong company and choose a specialization from real experience. Right now he is especially exploring AI engineering, data engineering and backend/full-stack systems.`
-  return `I can answer questions about Siddharth's current learning, Street Cause involvement, favorite project, college MERN training, skills, technical choices, goals, profiles and resume. I also try to say when something is not in his portfolio instead of making it up.`
+  return null
 }
 
 const getExtras = (question) => {
@@ -141,22 +141,35 @@ export default function ChatAssistant() {
   const ask = async (question) => {
     const clean = question.trim()
     if (!clean || loading) return
+
     setMessages(prev => [...prev, { role: 'user', text: clean }])
     setInput('')
+
+    const instantReply = localAnswer(clean)
+    if (instantReply) {
+      setMessages(prev => [...prev, { role: 'assistant', text: instantReply, extras: getExtras(clean) }])
+      return
+    }
+
     setLoading(true)
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 6000)
 
     let reply = ''
     try {
       const response = await fetch(`${apiBase}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: clean })
+        body: JSON.stringify({ message: clean }),
+        signal: controller.signal
       })
       if (!response.ok) throw new Error('API unavailable')
       const data = await response.json()
-      reply = data.reply || localAnswer(clean)
+      reply = data.reply || `I could not generate a detailed answer right now, but I can answer questions about Siddharth's projects, skills, current learning, Street Cause involvement, profiles and resume.`
     } catch {
-      reply = localAnswer(clean)
+      reply = `I could not reach the AI service quickly enough. Try asking about Siddharth's projects, skills, current learning, Street Cause involvement, profiles or resume — those answers work instantly.`
+    } finally {
+      clearTimeout(timeoutId)
     }
 
     setMessages(prev => [...prev, { role: 'assistant', text: reply, extras: getExtras(clean) }])
@@ -169,13 +182,13 @@ export default function ChatAssistant() {
         <div className="section-kicker">08 / AI ASSISTANT</div>
         <h2>Don't just read my portfolio. <span>Ask it.</span></h2>
         <p>
-          This assistant is grounded in my profile data. It can talk about what I am learning, what I care about beyond code, my projects and technical evidence — while saying clearly when something is not in my profile.
+          This assistant is grounded in my profile data. Common portfolio questions answer instantly from verified profile data, while open-ended questions can use the AI backend.
         </p>
         <div className="ask-points">
-          <div><span>01</span> Personal + project-grounded responses</div>
+          <div><span>01</span> Instant grounded answers for key questions</div>
           <div><span>02</span> Rich project and resume actions</div>
           <div><span>03</span> GitHub proof for technical claims</div>
-          <div><span>04</span> Local fallback for demo reliability</div>
+          <div><span>04</span> AI fallback with a short timeout</div>
         </div>
         <button className={`challenge-toggle ${challengeOpen ? 'active' : ''}`} onClick={() => setChallengeOpen(v => !v)}>
           <span>⚡</span><div><strong>Try to break my AI</strong><small>Test whether it admits what I do not know.</small></div><b>{challengeOpen ? '−' : '+'}</b>
