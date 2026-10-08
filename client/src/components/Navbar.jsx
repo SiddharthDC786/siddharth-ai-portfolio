@@ -12,7 +12,7 @@ export default function Navbar() {
           <a href="#about">About</a>
           <a href="#current-focus">Currently</a>
           <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
+          <a href="#beyond-code">Beyond Code</a>
           <a href="#ask">Ask AI</a>
         </div>
         <a className="nav-cta" href={profile.links.resume} target="_blank" rel="noreferrer">
