@@ -4,32 +4,51 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 
-/* Hero entrance: quiet, staged, premium */
+/* Keep the hero atmosphere still after load. */
+.ambient-one,
+.ambient-two { animation: none !important; }
+
+.hero-panel { animation: none; }
+.status-dot { animation: none !important; box-shadow: 0 0 9px rgba(110,231,183,.5); }
+.status-pill::after { display: none; }
+
+/* Hero entrance: one clean pass, then everything stays still. */
 @keyframes heroRise {
-  from { opacity: 0; transform: translateY(22px) scale(.992); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-@keyframes heroPanelIn {
-  from { opacity: 0; transform: translateY(20px) scale(.975); }
+
+@keyframes nameSettle {
+  from { opacity: 0; transform: translateY(10px) scale(.985); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.motion-ready .hero-left > * {
+@keyframes heroPanelIn {
+  from { opacity: 0; transform: translateY(16px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.motion-ready .hero-left > *:not(h1) {
   opacity: 0;
-  animation: heroRise .95s cubic-bezier(.22,1,.36,1) forwards;
+  animation: heroRise .86s cubic-bezier(.22,1,.36,1) forwards;
   will-change: opacity, transform;
 }
-.motion-ready .hero-left > *:nth-child(1) { animation-delay: .06s; }
-.motion-ready .hero-left > *:nth-child(2) { animation-delay: .13s; }
-.motion-ready .hero-left > *:nth-child(3) { animation-delay: .20s; }
+.motion-ready .hero-left > *:nth-child(1) { animation-delay: .05s; }
+.motion-ready .hero-left > *:nth-child(2) { animation-delay: .11s; }
 .motion-ready .hero-left > *:nth-child(4) { animation-delay: .28s; }
-.motion-ready .hero-left > *:nth-child(5) { animation-delay: .36s; }
-.motion-ready .hero-left > *:nth-child(6) { animation-delay: .45s; }
-.motion-ready .hero-left > *:nth-child(7) { animation-delay: .54s; }
+.motion-ready .hero-left > *:nth-child(5) { animation-delay: .35s; }
+.motion-ready .hero-left > *:nth-child(6) { animation-delay: .43s; }
+.motion-ready .hero-left > *:nth-child(7) { animation-delay: .51s; }
+
+.motion-ready .hero h1 {
+  opacity: 0;
+  animation: nameSettle 1.02s cubic-bezier(.22,1,.36,1) .17s forwards;
+  will-change: opacity, transform;
+}
 
 .motion-ready .hero-panel {
   opacity: 0;
-  animation: heroPanelIn 1.05s cubic-bezier(.22,1,.36,1) .28s forwards;
+  animation: heroPanelIn 1s cubic-bezier(.22,1,.36,1) .30s forwards;
 }
 
 /* Scroll reveal */
@@ -46,7 +65,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   transform: translateY(0) scale(1);
 }
 
-/* Hero treatment: stable, soft depth, no gimmicky tilt */
+/* Hero treatment: stable, soft depth. */
 .hero-panel {
   transform: none;
   transition:
@@ -62,25 +81,21 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 
 @media (hover: hover) {
   .hero-panel:hover {
-    transform: translateY(-4px) scale(1.006);
-    border-color: rgba(255,255,255,.13);
+    transform: translateY(-3px) scale(1.004);
+    border-color: rgba(255,255,255,.12);
     box-shadow:
-      0 34px 78px rgba(0,0,0,.36),
+      0 32px 74px rgba(0,0,0,.35),
       0 1px 0 rgba(255,255,255,.035) inset,
-      0 0 0 1px rgba(255,255,255,.035);
+      0 0 0 1px rgba(255,255,255,.03);
   }
 }
 
-.hero h1 {
-  text-shadow: none;
-}
+.hero h1 { text-shadow: none; }
 .hero h1 span {
   background-size: 100% 100%;
-  animation: none;
+  background-position: center;
+  animation: none !important;
 }
-
-.status-pill::after { display: none; }
-.status-dot { animation: none !important; box-shadow: 0 0 10px rgba(110,231,183,.55); }
 
 /* Calm hover depth */
 .project-card,
