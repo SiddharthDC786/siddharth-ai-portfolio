@@ -14,6 +14,19 @@ export const profile = {
     provider: 'VNRVJIET',
     summary: 'College-provided full-stack training covering React, Node.js, Express, MongoDB and the flow between frontend, backend and database layers.'
   },
+  community: {
+    title: 'Street Cause',
+    role: 'Student Member · VNRVJIET',
+    summary: 'I am part of Street Cause at VNRVJIET. Being involved in a student-run social-impact organisation gives me a space outside academics to work with people, contribute to community-focused initiatives and understand that execution matters beyond technical projects too.',
+    organisation: 'Street Cause is a national student-run NGO founded in Hyderabad in 2009 with a mission to develop socially conscious student leaders and create sustainable social impact.',
+    areas: ['Community', 'Teamwork', 'Social Impact']
+  },
+  favoriteProject: {
+    title: 'Vigil / investigation-ai',
+    kicker: 'THE PROJECT I ENJOYED MOST',
+    text: 'Vigil is the project I connected with most because it brought together several things I find interesting at once: AI, graph-based relationships, backend APIs, structured data and an interface that helps make complex information easier to understand. It made me more curious about AI engineering, data systems and how intelligent products are actually built end to end.',
+    link: 'https://github.com/SiddharthDC786/investigation-ai'
+  },
   aboutDetails: [
     {
       label: 'WHO I AM',
