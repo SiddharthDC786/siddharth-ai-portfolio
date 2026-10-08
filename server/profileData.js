@@ -9,6 +9,16 @@ export const profile = {
   },
   currentFocus: ['MERN Stack', 'C++', 'DSA', 'LeetCode', 'AI Engineering exploration', 'Data Engineering exploration', 'Backend systems'],
   learningStyle: 'Learn → Build → Break → Improve → Explain. Siddharth learns best by building and tries to understand why a technology is used, not only how to copy its syntax.',
+  communityInvolvement: {
+    name: 'Street Cause',
+    context: 'Siddharth is part of Street Cause at VNRVJIET.',
+    description: 'Street Cause is a national student-run NGO founded in Hyderabad in 2009 with a mission centered on building socially conscious student leaders and creating sustainable social impact.',
+    personalTakeaway: 'For Siddharth, Street Cause adds a non-technical side to college life where teamwork, people, community-focused initiatives and execution matter.'
+  },
+  favoriteProject: {
+    name: 'Vigil / investigation-ai',
+    reason: 'Vigil is the project Siddharth enjoyed most because it combines AI, graph relationships, backend APIs, structured data and an interface for making complex investigation information easier to understand. It increased his curiosity about AI engineering, data systems and end-to-end intelligent products.'
+  },
   skills: ['React', 'Vite', 'MERN Stack', 'Node.js', 'Express', 'MongoDB', 'DSA', 'C', 'C++', 'Python', 'JavaScript', 'Tailwind'],
   projectExposure: ['FastAPI', 'PostgreSQL', 'TensorFlow/Keras', 'CNN/Streamlit', 'NLP concepts', 'Neo4j', 'Graph analytics'],
   interests: ['AI Engineering', 'Data Engineering', 'Full-stack Development', 'Backend Systems', 'DSA', 'Applied Machine Learning'],
