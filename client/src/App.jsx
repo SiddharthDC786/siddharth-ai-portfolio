@@ -25,9 +25,10 @@ function App() {
 
         <section className="section" id="about">
           <div className="section-kicker">01 / ABOUT</div>
-          <div className="about-grid">
+          <div className="about-grid refined-about-grid">
             <div>
               <h2>I am still exploring — and that is intentional.</h2>
+              <p className="about-lead">I would rather build enough real things to choose my direction with evidence than pick a title too early.</p>
             </div>
             <div className="about-copy">
               <p>{profile.intro}</p>
@@ -37,29 +38,79 @@ function App() {
               </div>
             </div>
           </div>
+
+          <div className="about-detail-grid">
+            {profile.aboutDetails.map(item => (
+              <article className="about-detail-card" key={item.label}>
+                <span>{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section focus-section" id="current-focus">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-kicker">02 / CURRENTLY</div>
+              <h2>What I am actually working on right now.</h2>
+            </div>
+            <p className="section-side-copy">My portfolio is not a finished identity. It is a snapshot of what I am actively learning and testing through college.</p>
+          </div>
+
+          <div className="focus-grid">
+            {profile.currentFocus.map(item => (
+              <article className="focus-card" key={item.index}>
+                <div className="focus-index">{item.index}</div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <div className="focus-tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+              </article>
+            ))}
+          </div>
+
+          <div className="training-strip">
+            <div>
+              <span>COLLEGE TRAINING</span>
+              <strong>{profile.collegeTraining.title}</strong>
+            </div>
+            <p>{profile.collegeTraining.summary}</p>
+            <b>{profile.collegeTraining.provider}</b>
+          </div>
+
+          <div className="learning-loop" aria-label="How Siddharth learns">
+            <span>HOW I LEARN</span>
+            <div>
+              {profile.learningLoop.map((step, index) => (
+                <span key={step}><b>{step}</b>{index < profile.learningLoop.length - 1 && <i>→</i>}</span>
+              ))}
+            </div>
+          </div>
         </section>
 
         <Projects />
         <Skills />
 
         <section className="section" id="journey">
-          <div className="section-kicker">04 / JOURNEY</div>
-          <div className="journey-grid">
-            <div className="journey-card">
-              <span>NOW</span>
-              <h3>{profile.year}</h3>
-              <p>{profile.course}</p>
+          <div className="section-heading-row">
+            <div>
+              <div className="section-kicker">05 / JOURNEY</div>
+              <h2>Range first. Depth with clarity next.</h2>
             </div>
-            <div className="journey-card">
-              <span>FOCUS</span>
-              <h3>Build fundamentals</h3>
-              <p>DSA, full-stack development and practical AI/ML projects.</p>
-            </div>
-            <div className="journey-card accent-card">
-              <span>NEXT</span>
-              <h3>Find my strongest lane</h3>
-              <p>Explore AI engineering, data engineering and product-building before specialising.</p>
-            </div>
+            <p className="section-side-copy">I am using each stage to learn what kind of technical problems I want to spend more time solving.</p>
+          </div>
+          <div className="journey-timeline">
+            {profile.journey.map((item, index) => (
+              <article className={`journey-step ${index === profile.journey.length - 1 ? 'active' : ''}`} key={item.label}>
+                <div className="journey-marker"><span>{String(index + 1).padStart(2, '0')}</span></div>
+                <div>
+                  <span>{item.label}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
