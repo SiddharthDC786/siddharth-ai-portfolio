@@ -1,0 +1,245 @@
+/* Showpiece layer: intentionally more visible motion + stronger laptop fit. */
+
+:root { --reveal-delay: 0ms; }
+
+/* Scroll reveal */
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(34px) scale(.985);
+  filter: blur(8px);
+  transition:
+    opacity .72s cubic-bezier(.2,.7,.2,1) var(--reveal-delay),
+    transform .72s cubic-bezier(.2,.7,.2,1) var(--reveal-delay),
+    filter .72s ease var(--reveal-delay);
+}
+.motion-reveal.motion-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Stronger hero energy */
+.hero { perspective: 1200px; }
+.hero-panel {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--hero-rotate-x, 0deg)) rotateY(var(--hero-rotate-y, 0deg)) rotateZ(.6deg);
+  transition: transform .18s ease-out, box-shadow .3s ease;
+  box-shadow: 0 30px 80px rgba(0,0,0,.36), 0 0 0 1px rgba(139,92,246,.06), 0 0 70px rgba(139,92,246,.10);
+}
+.hero-panel:hover { box-shadow: 0 38px 95px rgba(0,0,0,.42), 0 0 0 1px rgba(139,92,246,.16), 0 0 95px rgba(56,189,248,.12); }
+
+.hero h1 {
+  text-shadow: 0 0 35px rgba(255,255,255,.035);
+}
+.hero h1 span {
+  background-size: 200% auto;
+  animation: headlineShimmer 7s linear infinite;
+}
+@keyframes headlineShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.status-pill {
+  position: relative;
+  overflow: hidden;
+}
+.status-pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-130%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  animation: pillSweep 4.6s ease-in-out infinite;
+}
+@keyframes pillSweep {
+  0%, 58% { transform: translateX(-130%); }
+  78%, 100% { transform: translateX(130%); }
+}
+
+/* More cinematic card interaction */
+.project-card,
+.focus-card,
+.about-detail-card,
+.mindset-card,
+.profile-card,
+.community-card,
+.favorite-card {
+  isolation: isolate;
+}
+.project-card::before,
+.focus-card::before,
+.about-detail-card::before,
+.mindset-card::before,
+.profile-card::before,
+.community-card::before,
+.favorite-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(120deg, rgba(139,92,246,.18), transparent 34%, rgba(56,189,248,.14));
+  transition: opacity .3s ease;
+  z-index: -1;
+}
+.project-card:hover::before,
+.focus-card:hover::before,
+.about-detail-card:hover::before,
+.mindset-card:hover::before,
+.profile-card:hover::before,
+.community-card:hover::before,
+.favorite-card:hover::before { opacity: 1; }
+
+.project-card:hover,
+.focus-card:hover,
+.about-detail-card:hover,
+.mindset-card:hover,
+.profile-card:hover,
+.community-card:hover,
+.favorite-card:hover {
+  transform: translateY(-7px) scale(1.01);
+}
+
+/* AI feels alive */
+.chat-card {
+  position: relative;
+  overflow: hidden;
+}
+.chat-card::before {
+  content: '';
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  top: -120px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(139,92,246,.18), transparent 65%);
+  pointer-events: none;
+  animation: chatGlow 6s ease-in-out infinite;
+}
+@keyframes chatGlow {
+  0%,100% { transform: translate(0,0) scale(1); opacity: .7; }
+  50% { transform: translate(-35px,35px) scale(1.15); opacity: 1; }
+}
+
+.suggestions button { position: relative; overflow: hidden; }
+.suggestions button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent, rgba(255,255,255,.07), transparent);
+  transform: translateX(-120%);
+  transition: transform .45s ease;
+}
+.suggestions button:hover::after { transform: translateX(120%); }
+
+/* Journey line glow */
+.journey-step:not(:last-child):before { box-shadow: 0 0 18px rgba(139,92,246,.18); }
+.journey-step.active .journey-marker span { animation: activeNodePulse 2.6s ease-in-out infinite; }
+@keyframes activeNodePulse {
+  0%,100% { transform: scale(1); box-shadow: 0 0 20px rgba(110,231,183,.06); }
+  50% { transform: scale(1.06); box-shadow: 0 0 36px rgba(110,231,183,.18); }
+}
+
+/* MUCH stronger laptop responsiveness */
+@media (max-width: 1400px) {
+  .container, .section { width: min(100% - 32px, 1120px); }
+  .nav { height: 66px; }
+  .nav-links { gap: 18px; font-size: 13px; }
+
+  .hero {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+    gap: 38px;
+    padding-block: 64px 48px;
+  }
+  .hero h1 { font-size: clamp(60px, 7.2vw, 92px); }
+  .hero-subtitle { font-size: 15px; line-height: 1.65; }
+  .status-pill { margin-bottom: 24px; }
+  .hero-actions { margin: 26px 0 30px; }
+  .hero-meta { gap: 22px; }
+  .hero-panel pre { padding: 22px 22px; font-size: 12px; line-height: 1.7; }
+
+  .section { padding-block: 72px; }
+  .section h2 { font-size: clamp(34px, 4.2vw, 52px); }
+  .about-grid, .skills-layout { gap: 44px; }
+  .ask-section { gap: 40px; grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr); }
+  .project-card, .focus-card { padding: 24px; }
+  .journey-step { min-height: 150px; }
+}
+
+@media (max-width: 1180px) {
+  .container, .section { width: min(100% - 26px, 1020px); }
+  .nav-links { gap: 14px; font-size: 12px; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding-top: 52px;
+  }
+  .hero-left { max-width: 820px; }
+  .hero-panel { width: min(100%, 760px); transform: none !important; }
+
+  .about-grid,
+  .skills-layout,
+  .ask-section,
+  .architecture-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  .projects-grid,
+  .focus-grid,
+  .mindset-grid,
+  .about-detail-grid,
+  .profile-grid,
+  .personal-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+
+  .section-heading-row { align-items: flex-start; }
+  .section-side-copy { max-width: 420px; }
+  .chat-card { max-width: 820px; }
+}
+
+/* Specifically fix short laptop displays like 1366x768 / 1440x800 */
+@media (max-height: 820px) and (min-width: 900px) {
+  .nav { height: 60px; }
+  .hero { padding-block: 40px 36px; gap: 30px; }
+  .hero h1 { font-size: clamp(54px, 6.3vw, 80px); margin-bottom: 18px; }
+  .hero-hook { margin-bottom: 8px; }
+  .hero-subtitle { font-size: 14px; line-height: 1.55; }
+  .hero-actions { margin: 20px 0 24px; }
+  .hero-meta { padding-top: 16px; }
+  .hero-panel pre { padding: 18px 20px; font-size: 11px; line-height: 1.55; }
+  .panel-note { padding: 11px 13px; margin-bottom: 14px; }
+  .section { padding-block: 58px; }
+  .section h2 { font-size: clamp(32px, 3.8vw, 46px); }
+}
+
+@media (max-width: 820px) {
+  .projects-grid,
+  .focus-grid,
+  .mindset-grid,
+  .about-detail-grid,
+  .profile-grid,
+  .personal-grid { grid-template-columns: 1fr !important; }
+
+  .section-heading-row { flex-direction: column; gap: 14px; }
+  .nav-links { display: none; }
+  .brand > span:last-child { display: inline; }
+  .nav-cta { margin-left: auto; }
+}
+
+@media (max-width: 620px) {
+  .brand > span:last-child { display: none; }
+  .container, .section { width: min(100% - 18px, 560px); }
+  .section { padding-block: 48px; }
+  .hero { padding-top: 42px; }
+  .hero h1 { font-size: clamp(46px, 17vw, 64px); }
+  .hero-actions > * { flex: 1 1 100%; }
+  .hero-meta { grid-template-columns: 1fr !important; }
+  .chat-messages { max-height: 50vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .hero h1 span, .status-pill::after, .chat-card::before, .journey-step.active .journey-marker span { animation: none !important; }
+}
