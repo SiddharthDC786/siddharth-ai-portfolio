@@ -5,6 +5,7 @@ import './styles.css'
 import './refinement.css'
 import './personalization.css'
 import './responsive-motion.css'
+import './showpiece.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
