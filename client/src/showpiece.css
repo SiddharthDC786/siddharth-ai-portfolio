@@ -1,91 +1,88 @@
-/* Professional motion + responsive showpiece layer */
+/* Premium motion + responsive showpiece layer */
 
 :root { --reveal-delay: 0ms; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 
-/* Initial hero entrance: calm, staged, professional */
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Hero entrance: quiet, staged, premium */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(22px) scale(.992); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
-@keyframes heroFadeSide {
-  from { opacity: 0; transform: translateX(18px) scale(.99); }
-  to { opacity: 1; transform: translateX(0) scale(1); }
+@keyframes heroPanelIn {
+  from { opacity: 0; transform: translateY(20px) scale(.975); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .motion-ready .hero-left > * {
   opacity: 0;
-  animation: heroFadeUp .72s cubic-bezier(.2,.7,.2,1) forwards;
+  animation: heroRise .95s cubic-bezier(.22,1,.36,1) forwards;
+  will-change: opacity, transform;
 }
-.motion-ready .hero-left > *:nth-child(1) { animation-delay: .08s; }
-.motion-ready .hero-left > *:nth-child(2) { animation-delay: .16s; }
-.motion-ready .hero-left > *:nth-child(3) { animation-delay: .24s; }
-.motion-ready .hero-left > *:nth-child(4) { animation-delay: .32s; }
-.motion-ready .hero-left > *:nth-child(5) { animation-delay: .40s; }
-.motion-ready .hero-left > *:nth-child(6) { animation-delay: .48s; }
-.motion-ready .hero-left > *:nth-child(7) { animation-delay: .56s; }
+.motion-ready .hero-left > *:nth-child(1) { animation-delay: .06s; }
+.motion-ready .hero-left > *:nth-child(2) { animation-delay: .13s; }
+.motion-ready .hero-left > *:nth-child(3) { animation-delay: .20s; }
+.motion-ready .hero-left > *:nth-child(4) { animation-delay: .28s; }
+.motion-ready .hero-left > *:nth-child(5) { animation-delay: .36s; }
+.motion-ready .hero-left > *:nth-child(6) { animation-delay: .45s; }
+.motion-ready .hero-left > *:nth-child(7) { animation-delay: .54s; }
 
 .motion-ready .hero-panel {
   opacity: 0;
-  animation: heroFadeSide .9s cubic-bezier(.2,.7,.2,1) .32s forwards;
+  animation: heroPanelIn 1.05s cubic-bezier(.22,1,.36,1) .28s forwards;
 }
 
 /* Scroll reveal */
 .motion-reveal {
   opacity: 0;
-  transform: translateY(28px) scale(.99);
-  filter: blur(5px);
+  transform: translateY(22px) scale(.995);
   transition:
-    opacity .72s cubic-bezier(.2,.7,.2,1) var(--reveal-delay),
-    transform .72s cubic-bezier(.2,.7,.2,1) var(--reveal-delay),
-    filter .72s ease var(--reveal-delay);
+    opacity .82s cubic-bezier(.22,1,.36,1) var(--reveal-delay),
+    transform .82s cubic-bezier(.22,1,.36,1) var(--reveal-delay);
   will-change: opacity, transform;
 }
 .motion-reveal.motion-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
-  filter: blur(0);
 }
 
-/* Hero interaction */
-.hero { perspective: 1200px; }
+/* Hero treatment: stable, soft depth, no gimmicky tilt */
 .hero-panel {
-  transform-style: preserve-3d;
-  transform:
-    translate3d(var(--hero-shift-x, 0px), var(--hero-shift-y, 0px), 0)
-    rotateX(var(--hero-rotate-x, 0deg))
-    rotateY(var(--hero-rotate-y, 0deg))
-    rotateZ(.45deg);
-  transition: transform .22s ease-out, box-shadow .3s ease, border-color .3s ease;
-  box-shadow: 0 30px 80px rgba(0,0,0,.34), 0 0 0 1px rgba(139,92,246,.05), 0 0 70px rgba(139,92,246,.08);
-}
-.hero-panel:hover {
-  box-shadow: 0 38px 95px rgba(0,0,0,.40), 0 0 0 1px rgba(139,92,246,.13), 0 0 90px rgba(56,189,248,.10);
-}
-
-.hero h1 { text-shadow: 0 0 34px rgba(255,255,255,.03); }
-.hero h1 span { background-size: 180% auto; animation: headlineShimmer 8s linear infinite; }
-@keyframes headlineShimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 180% center; }
+  transform: none;
+  transition:
+    transform .48s cubic-bezier(.22,1,.36,1),
+    box-shadow .48s cubic-bezier(.22,1,.36,1),
+    border-color .48s ease,
+    background .48s ease;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.30),
+    0 1px 0 rgba(255,255,255,.025) inset,
+    0 0 0 1px rgba(255,255,255,.025);
 }
 
-.status-pill { position: relative; overflow: hidden; }
-.status-pill::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  transform: translateX(-130%);
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.07), transparent);
-  animation: pillSweep 5s ease-in-out infinite;
-}
-@keyframes pillSweep {
-  0%, 62% { transform: translateX(-130%); }
-  82%, 100% { transform: translateX(130%); }
+@media (hover: hover) {
+  .hero-panel:hover {
+    transform: translateY(-4px) scale(1.006);
+    border-color: rgba(255,255,255,.13);
+    box-shadow:
+      0 34px 78px rgba(0,0,0,.36),
+      0 1px 0 rgba(255,255,255,.035) inset,
+      0 0 0 1px rgba(255,255,255,.035);
+  }
 }
 
-/* Hover depth: subtle zoom, no gimmicky bounce */
+.hero h1 {
+  text-shadow: none;
+}
+.hero h1 span {
+  background-size: 100% 100%;
+  animation: none;
+}
+
+.status-pill::after { display: none; }
+.status-dot { animation: none !important; box-shadow: 0 0 10px rgba(110,231,183,.55); }
+
+/* Calm hover depth */
 .project-card,
 .focus-card,
 .about-detail-card,
@@ -99,10 +96,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 .training-strip,
 .learning-loop {
   transition:
-    transform .28s cubic-bezier(.2,.7,.2,1),
-    border-color .28s ease,
-    box-shadow .28s ease,
-    background .28s ease;
+    transform .38s cubic-bezier(.22,1,.36,1),
+    border-color .38s ease,
+    box-shadow .38s ease,
+    background .38s ease;
   transform-origin: center;
 }
 
@@ -116,9 +113,9 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   .favorite-card:hover,
   .architecture-reasons article:hover,
   .flow-node:hover {
-    transform: translateY(-5px) scale(1.012);
-    border-color: rgba(139,92,246,.28);
-    box-shadow: 0 20px 58px rgba(0,0,0,.22);
+    transform: translateY(-4px) scale(1.008);
+    border-color: rgba(255,255,255,.14);
+    box-shadow: 0 22px 54px rgba(0,0,0,.20);
   }
 
   .primary-btn:hover,
@@ -127,7 +124,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   .favorite-link:hover,
   .suggestions button:hover,
   .challenge-list button:hover {
-    transform: translateY(-2px) scale(1.018);
+    transform: translateY(-1px) scale(1.01);
   }
 }
 
@@ -137,47 +134,33 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 .favorite-link,
 .suggestions button,
 .challenge-list button {
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease, color .22s ease;
+  transition:
+    transform .32s cubic-bezier(.22,1,.36,1),
+    box-shadow .32s ease,
+    border-color .32s ease,
+    background .32s ease,
+    color .32s ease;
 }
 
-/* AI ambience */
+/* Keep AI ambience subtle */
 .chat-card { position: relative; overflow: hidden; }
 .chat-card::before {
   content: '';
   position: absolute;
-  width: 230px;
-  height: 230px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  top: -120px;
-  right: -100px;
-  background: radial-gradient(circle, rgba(139,92,246,.16), transparent 65%);
+  top: -130px;
+  right: -110px;
+  background: radial-gradient(circle, rgba(139,92,246,.11), transparent 67%);
   pointer-events: none;
-  animation: chatGlow 7s ease-in-out infinite;
-}
-@keyframes chatGlow {
-  0%,100% { transform: translate(0,0) scale(1); opacity: .65; }
-  50% { transform: translate(-30px,30px) scale(1.12); opacity: .95; }
 }
 
-.suggestions button { position: relative; overflow: hidden; }
-.suggestions button::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg, transparent, rgba(255,255,255,.06), transparent);
-  transform: translateX(-120%);
-  transition: transform .48s ease;
-}
-.suggestions button:hover::after { transform: translateX(120%); }
+.suggestions button::after { display: none; }
+.journey-step.active .journey-marker span { animation: none !important; }
+.journey-step:not(:last-child):before { box-shadow: 0 0 12px rgba(139,92,246,.10); }
 
-.journey-step:not(:last-child):before { box-shadow: 0 0 16px rgba(139,92,246,.16); }
-.journey-step.active .journey-marker span { animation: activeNodePulse 3s ease-in-out infinite; }
-@keyframes activeNodePulse {
-  0%,100% { transform: scale(1); box-shadow: 0 0 18px rgba(110,231,183,.05); }
-  50% { transform: scale(1.045); box-shadow: 0 0 30px rgba(110,231,183,.14); }
-}
-
-/* Responsiveness: reflow earlier on laptops so 100% zoom works comfortably */
+/* Responsiveness */
 @media (max-width: 1440px) {
   .container, .section { width: min(100% - 30px, 1100px); }
   .nav { height: 64px; }
@@ -202,7 +185,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   .ask-section { gap: 36px; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }
 }
 
-/* Common 13–14 inch laptop widths */
 @media (max-width: 1280px) {
   .container, .section { width: min(100% - 26px, 1040px); }
 
@@ -212,7 +194,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
     padding-top: 46px;
   }
   .hero-left { max-width: 840px; }
-  .hero-panel { width: min(100%, 780px); transform: none !important; }
+  .hero-panel { width: min(100%, 780px); }
 
   .about-grid,
   .skills-layout,
@@ -231,7 +213,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   .chat-card { max-width: 860px; width: 100%; }
 }
 
-/* Short-height laptop displays such as 1366×768 / 1440×800 */
 @media (max-height: 840px) and (min-width: 900px) {
   .nav { height: 58px; }
   .hero { padding-block: 34px 30px; gap: 26px; }
@@ -258,7 +239,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   .section-heading-row { flex-direction: column; gap: 14px; }
   .nav-links { display: none; }
   .nav-cta { margin-left: auto; }
-  .hero-panel { animation: heroFadeUp .75s cubic-bezier(.2,.7,.2,1) .32s forwards; }
 }
 
 @media (max-width: 620px) {
@@ -278,8 +258,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   .motion-ready .hero-panel {
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
     animation: none !important;
   }
-  .hero h1 span, .status-pill::after, .chat-card::before, .journey-step.active .journey-marker span { animation: none !important; }
 }
