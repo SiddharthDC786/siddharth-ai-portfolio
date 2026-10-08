@@ -2,6 +2,10 @@
 
 > **Still exploring. Already building.**
 
+## Live Demo
+
+**Portfolio:** https://siddharth-ai-portfolio.onrender.com
+
 A selection-focused personal portfolio built for a college technical-domain round. Instead of treating the mandatory chatbot as an add-on, the entire experience is built around one idea:
 
 ## Don't just read my portfolio. Ask it.
