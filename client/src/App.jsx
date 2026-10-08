@@ -114,6 +114,43 @@ function App() {
           </div>
         </section>
 
+        <section className="section personal-section" id="beyond-code">
+          <div className="section-heading-row">
+            <div>
+              <div className="section-kicker">06 / BEYOND CODE</div>
+              <h2>The work I do says more when it has context.</h2>
+            </div>
+            <p className="section-side-copy">Technology is one part of how I am growing. Teamwork, community work and the projects I genuinely enjoy matter too.</p>
+          </div>
+
+          <div className="personal-grid">
+            <article className="community-card">
+              <div className="personal-card-top">
+                <span>COMMUNITY INVOLVEMENT</span>
+                <b>SC</b>
+              </div>
+              <h3>{profile.community.title}</h3>
+              <p className="personal-role">{profile.community.role}</p>
+              <p>{profile.community.summary}</p>
+              <div className="focus-tags">{profile.community.areas.map(area => <span key={area}>{area}</span>)}</div>
+              <div className="context-note">
+                <span>ABOUT THE ORGANISATION</span>
+                <p>{profile.community.organisation}</p>
+              </div>
+            </article>
+
+            <article className="favorite-card">
+              <div className="personal-card-top">
+                <span>{profile.favoriteProject.kicker}</span>
+                <b>★</b>
+              </div>
+              <h3>{profile.favoriteProject.title}</h3>
+              <p>{profile.favoriteProject.text}</p>
+              <a className="favorite-link" href={profile.favoriteProject.link} target="_blank" rel="noreferrer">Explore the project ↗</a>
+            </article>
+          </div>
+        </section>
+
         <EngineeringMindset />
         <ChatAssistant />
         <Architecture />
