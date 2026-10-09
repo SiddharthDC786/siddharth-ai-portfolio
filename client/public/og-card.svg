@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080808"/>
+      <stop offset="1" stop-color="#13090a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="26%" r="45%">
+      <stop offset="0" stop-color="#e50914" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#e50914" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" rx="40" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="40" fill="url(#glow)"/>
+  <circle cx="1015" cy="150" r="120" fill="none" stroke="#e50914" stroke-opacity=".22" stroke-width="2"/>
+  <circle cx="1015" cy="150" r="82" fill="none" stroke="#e50914" stroke-opacity=".34" stroke-width="2" stroke-dasharray="9 12"/>
+  <circle cx="1090" cy="92" r="8" fill="#e50914"/>
+  <text x="82" y="102" fill="#e50914" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="4">AIML · BACKEND · FULL STACK · APPLIED AI</text>
+  <text x="78" y="270" fill="#f3eee7" font-family="Arial, sans-serif" font-size="104" font-weight="800" letter-spacing="-5">DC SIDDHARTH</text>
+  <text x="82" y="346" fill="#a59d98" font-family="Arial, sans-serif" font-size="34" font-weight="500">Still exploring. Already building.</text>
+  <line x1="82" y1="395" x2="1118" y2="395" stroke="#ffffff" stroke-opacity=".09"/>
+  <text x="82" y="470" fill="#f3eee7" font-family="Arial, sans-serif" font-size="28" font-weight="700">9.53 CGPA</text>
+  <text x="300" y="470" fill="#f3eee7" font-family="Arial, sans-serif" font-size="28" font-weight="700">VNRVJIET</text>
+  <text x="508" y="470" fill="#f3eee7" font-family="Arial, sans-serif" font-size="28" font-weight="700">BACKEND + APIs</text>
+  <text x="824" y="470" fill="#f3eee7" font-family="Arial, sans-serif" font-size="28" font-weight="700">EVALUATOR AI</text>
+  <text x="82" y="552" fill="#7f7773" font-family="Arial, sans-serif" font-size="22">Interactive project case studies · technical evidence · project-aware AI</text>
+</svg>
