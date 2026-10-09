@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { profile } from './data/profileData'
+import { profilePhoto } from './data/profilePhoto'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import SeriesRail from './components/SeriesRail'
@@ -126,7 +127,16 @@ function App() {
             <p className="section-side-copy">Technology is one part of how I am growing. Teamwork, community work and the projects I genuinely enjoy matter too.</p>
           </div>
 
-          <div className="personal-grid">
+          <div className="personal-grid personal-grid-with-portrait">
+            <article className="portrait-card">
+              <img src={profilePhoto} alt="Personal portrait" loading="lazy" />
+              <div className="portrait-card-overlay">
+                <span>OUTSIDE THE TERMINAL</span>
+                <strong>Curious about systems. Grounded by people.</strong>
+                <small>A small glimpse beyond projects and code.</small>
+              </div>
+            </article>
+
             <article className="community-card">
               <div className="personal-card-top">
                 <span>COMMUNITY INVOLVEMENT</span>
