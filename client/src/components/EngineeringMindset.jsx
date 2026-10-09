@@ -21,7 +21,7 @@ export default function EngineeringMindset() {
     <section className="section" id="mindset">
       <div className="section-heading-row">
         <div>
-          <div className="section-kicker">05 / ENGINEERING MINDSET</div>
+          <div className="section-kicker">07 / ENGINEERING MINDSET</div>
           <h2>How I think when I build.</h2>
         </div>
         <p className="section-side-copy">Small decisions reveal more than a long list of tools.</p>
