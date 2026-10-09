@@ -1,24 +1,32 @@
-import { profile } from '../data/profileData'
+import { signature } from '../data/signatureData'
 
 export default function Skills() {
   return (
-    <section className="section" id="skills">
-      <div className="section-kicker">03 / SKILLS</div>
-      <div className="skills-layout">
+    <section className="section signature-stack-section" id="skills">
+      <div className="section-heading-row signature-heading">
         <div>
-          <h2>My toolkit is growing with every build.</h2>
-          <p className="muted">I would rather show what I am learning than pretend to be an expert at everything.</p>
+          <div className="section-kicker">03 / ENGINEERING STACK</div>
+          <h2>Tools I have actually touched through learning and projects.</h2>
         </div>
-        <div className="skill-groups">
-          {Object.entries(profile.skills).map(([group, items]) => (
-            <div className="skill-group" key={group}>
-              <span className="skill-label">{group}</span>
-              <div className="skill-pills">
-                {items.map(item => <span key={item}>{item}</span>)}
-              </div>
+        <p className="section-side-copy">Grouped by how I use them, not as a wall of logos. Some are current strengths; others are project exposure I am deliberately building on.</p>
+      </div>
+
+      <div className="stack-marquee" aria-hidden="true">
+        <div className="stack-marquee-track">
+          {[...signature.marquee, ...signature.marquee].map((tool, index) => <span key={`${tool}-${index}`}>{tool}<i>✦</i></span>)}
+        </div>
+      </div>
+
+      <div className="signature-stack-grid">
+        {signature.stack.map(group => (
+          <article className="signature-stack-card magnetic-card" key={group.title}>
+            <div className="stack-card-top"><span>{group.index}</span><b>{group.title}</b></div>
+            <p>{group.note}</p>
+            <div className="stack-tool-list">
+              {group.tools.map(tool => <span key={tool}>{tool}</span>)}
             </div>
-          ))}
-        </div>
+          </article>
+        ))}
       </div>
     </section>
   )
