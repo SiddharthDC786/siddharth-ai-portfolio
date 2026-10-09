@@ -33,9 +33,15 @@ export default function Hero({ onOpenTour }) {
         </div>
 
         <p className="cinematic-pretitle">AN INTERACTIVE PORTFOLIO SERIES</p>
-        <h1 className="signature-name cinematic-title">
-          DC <span>SIDDHARTH</span>
-        </h1>
+        <div className="hero-name-lockup">
+          <h1 className="signature-name cinematic-title">
+            DC <span>SIDDHARTH</span>
+          </h1>
+          <div className="hero-name-motion" aria-hidden="true">
+            <span className="hero-motion-ring"><i /></span>
+            <small>ACTIVE BUILD</small>
+          </div>
+        </div>
         <div className="cinematic-rule" />
         <p className="signature-statement cinematic-statement">Still exploring. Already building.</p>
         <p className="hero-subtitle signature-subtitle cinematic-subtitle">
