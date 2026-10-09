@@ -92,6 +92,7 @@
   overflow: auto;
   padding: clamp(24px, 4vw, 46px);
   border: 1px solid rgba(255,255,255,.08);
+  border-radius: 24px;
   background:
     radial-gradient(circle at 90% 10%, rgba(229,9,20,.14), transparent 34%),
     linear-gradient(145deg, #141010 0%, #080808 68%);
@@ -151,14 +152,13 @@
 .direction-lanes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
-  border-top: 1px solid rgba(255,255,255,.07);
-  border-left: 1px solid rgba(255,255,255,.07);
+  gap: 12px;
 }
 .direction-lanes article {
   min-height: 190px;
   padding: 24px;
-  border-right: 1px solid rgba(255,255,255,.07);
-  border-bottom: 1px solid rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 18px;
   background: rgba(255,255,255,.01);
 }
 .direction-lanes span {
@@ -176,10 +176,8 @@
 .episode-preview-points {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 1px;
+  gap: 12px;
   margin-top: 28px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.07);
 }
 .episode-preview-points div {
   min-height: 126px;
@@ -187,6 +185,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 16px;
   background: #0d0d0d;
 }
 .episode-preview-points span { color: #e50914; font-size: 9px; }
@@ -201,6 +201,7 @@
 .experience-modal-actions a {
   padding: 12px 16px;
   border: 1px solid rgba(255,255,255,.09);
+  border-radius: 999px;
   background: #f3eee7;
   color: #090909;
   text-decoration: none;
@@ -208,6 +209,121 @@
   letter-spacing: .06em;
 }
 .experience-modal-actions a + a { background: transparent; color: #f3eee7; }
+
+/* Softer cinematic surfaces */
+.cinematic-shell .series-episode-card,
+.cinematic-shell .project-card,
+.cinematic-shell .focus-card,
+.cinematic-shell .about-detail-card,
+.cinematic-shell .community-card,
+.cinematic-shell .favorite-card,
+.cinematic-shell .mindset-card,
+.cinematic-shell .signature-stack-card,
+.cinematic-shell .profile-card,
+.cinematic-shell .training-strip,
+.cinematic-shell .learning-loop,
+.cinematic-shell .principle-card,
+.cinematic-shell .chat-card {
+  border-radius: 20px !important;
+}
+
+.cinematic-shell .series-episode-card { overflow: hidden; }
+.cinematic-shell .project-card,
+.cinematic-shell .focus-card,
+.cinematic-shell .about-detail-card,
+.cinematic-shell .community-card,
+.cinematic-shell .favorite-card,
+.cinematic-shell .mindset-card,
+.cinematic-shell .signature-stack-card,
+.cinematic-shell .profile-card {
+  transition: transform .34s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+
+@media (hover:hover) {
+  .cinematic-shell .project-card:hover,
+  .cinematic-shell .focus-card:hover,
+  .cinematic-shell .about-detail-card:hover,
+  .cinematic-shell .community-card:hover,
+  .cinematic-shell .favorite-card:hover,
+  .cinematic-shell .mindset-card:hover,
+  .cinematic-shell .signature-stack-card:hover,
+  .cinematic-shell .profile-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Professional motion accent beside the hero name */
+.hero-name-lockup {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(16px, 2.3vw, 34px);
+}
+
+.hero-name-lockup .cinematic-title { flex: 1 1 auto; }
+
+.hero-name-motion {
+  flex: 0 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  margin-bottom: clamp(8px, 1vw, 18px);
+}
+
+.hero-motion-ring {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(229,9,20,.28);
+  box-shadow: 0 0 0 8px rgba(229,9,20,.035), 0 0 28px rgba(229,9,20,.09);
+}
+
+.hero-motion-ring::before,
+.hero-motion-ring::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hero-motion-ring::before {
+  inset: 7px;
+  border: 1px dashed rgba(229,9,20,.45);
+  animation: heroOrbitSpin 7s linear infinite;
+}
+
+.hero-motion-ring::after {
+  width: 6px;
+  height: 6px;
+  top: 4px;
+  left: 50%;
+  margin-left: -3px;
+  background: #e50914;
+  box-shadow: 0 0 14px rgba(229,9,20,.65);
+  transform-origin: 3px 19px;
+  animation: heroOrbitDot 4.8s linear infinite;
+}
+
+.hero-motion-ring i {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: #f2eee7;
+  box-shadow: 0 0 18px rgba(255,255,255,.2);
+}
+
+.hero-name-motion small {
+  color: #6f6865;
+  font: 600 7px/1 'Space Grotesk', sans-serif;
+  letter-spacing: .18em;
+  white-space: nowrap;
+}
+
+@keyframes heroOrbitSpin { to { transform: rotate(360deg); } }
+@keyframes heroOrbitDot { to { transform: rotate(360deg); } }
 
 /* Keep the custom cursor above every interactive overlay. */
 .signature-cursor-dot,
@@ -224,12 +340,25 @@
 @media (max-width: 760px) {
   .cinematic-orbit { width: min(92vw, 430px); }
   .experience-modal-backdrop { padding: 12px; }
-  .experience-modal { padding: 22px; max-height: 88vh; }
+  .experience-modal { padding: 22px; max-height: 88vh; border-radius: 20px; }
   .direction-lanes, .episode-preview-points { grid-template-columns: 1fr; }
   .direction-lanes article { min-height: auto; }
+  .hero-name-lockup { align-items: center; gap: 12px; }
+  .hero-name-motion { margin-bottom: 0; }
+  .hero-motion-ring { width: 38px; height: 38px; }
+  .hero-motion-ring::before { inset: 6px; }
+  .hero-motion-ring::after { transform-origin: 3px 15px; }
+  .hero-name-motion small { display: none; }
+}
+
+@media (max-width: 520px) {
+  .hero-name-lockup { display: block; }
+  .hero-name-motion { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .experience-modal-backdrop,
-  .experience-modal { animation: none !important; }
+  .experience-modal,
+  .hero-motion-ring::before,
+  .hero-motion-ring::after { animation: none !important; }
 }
