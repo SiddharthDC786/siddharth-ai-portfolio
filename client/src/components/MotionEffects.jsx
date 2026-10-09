@@ -49,8 +49,8 @@ export default function MotionEffects() {
     let frame
 
     const animateCursor = () => {
-      ringX += (pointerX - ringX) * 0.17
-      ringY += (pointerY - ringY) * 0.17
+      ringX += (pointerX - ringX) * 0.3
+      ringY += (pointerY - ringY) * 0.3
       if (ringRef.current) ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`
       frame = requestAnimationFrame(animateCursor)
     }
