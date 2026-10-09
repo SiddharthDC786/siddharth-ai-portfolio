@@ -18,7 +18,7 @@ export const profile = {
   },
   favoriteProject: {
     name: 'Vigil / investigation-ai',
-    reason: 'Vigil is the project Siddharth enjoyed most because it combines AI, graph relationships, backend APIs, structured data and an interface for making complex investigation information easier to understand. It increased his curiosity about AI engineering, data systems and end-to-end intelligent products.'
+    reason: 'Vigil is the project Siddharth enjoyed most because it combines AI, graph relationships, backend APIs, structured data and an interface for making complex investigation information easier to understand. He also served as team lead, coordinated work through GitHub, and contributed primarily to backend and API development. It increased his curiosity about AI engineering, data systems and end-to-end intelligent products.'
   },
   skills: ['React', 'Vite', 'JavaScript', 'HTML', 'CSS', 'Tailwind', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Python', 'FastAPI', 'PostgreSQL', 'Neo4j', 'C', 'C++', 'DSA', 'LeetCode', 'TensorFlow', 'Keras', 'CNNs', 'OpenCV', 'Streamlit', 'Cytoscape.js', 'spaCy', 'RapidFuzz', 'Git', 'GitHub', 'Docker Compose', 'JWT', 'Zod'],
   projectExposure: ['Graph analytics', 'Entity resolution', 'NLP concepts', 'REST APIs', 'Authentication', 'Role-based access control', 'Computer vision', 'Transfer learning workflows'],
@@ -27,10 +27,10 @@ export const profile = {
   projects: [
     {
       name: 'Vigil / investigation-ai',
-      ownership: "Team project hosted on Siddharth's GitHub",
+      ownership: "Team project hosted on Siddharth's GitHub; Siddharth served as team lead",
       description: 'An AI-powered criminal-network analysis system using case data, search, entity relationships, network graphs, timelines, NLP/entity-resolution ideas and graph analytics.',
       technologies: ['React', 'Vite', 'Tailwind', 'Cytoscape.js', 'FastAPI', 'Python', 'PostgreSQL', 'Neo4j', 'spaCy', 'RapidFuzz', 'Docker Compose'],
-      contribution: 'Worked within a team stack spanning investigation UI, backend APIs, structured case data and graph/NLP concepts.',
+      contribution: 'Worked primarily on backend and API development while serving as team lead. He coordinated the team through GitHub, managed repository workflow and integrations, and helped connect structured case data, API endpoints and graph/NLP-oriented features into the system.',
       url: 'https://github.com/SiddharthDC786/investigation-ai',
       proof: 'https://github.com/SiddharthDC786/investigation-ai/blob/main/README.md'
     },
@@ -38,6 +38,7 @@ export const profile = {
       name: 'CampusSpace AI',
       ownership: 'Collaborative project; Siddharth is a GitHub collaborator',
       description: 'A MERN campus resource-booking platform with JWT authentication, HTTP-only cookies, role-based access, validation, booking-conflict logic, notifications and student/admin workflows.',
+      contribution: 'Worked on the backend and REST API layer, including authenticated user/admin flows, booking and resource operations, validation, conflict-aware business rules and MongoDB integration.',
       technologies: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT', 'Zod'],
       url: 'https://github.com/NikithPrasad/campusspace-ai',
       proof: 'https://github.com/NikithPrasad/campusspace-ai/blob/main/README.md'
