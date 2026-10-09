@@ -24,7 +24,7 @@ export default function Hero({ onOpenTour }) {
   }, [directionOpen])
 
   return (
-    <section className="hero signature-hero cinematic-hero container" id="top">
+    <section className={`hero signature-hero cinematic-hero container ${directionOpen ? 'direction-modal-open' : ''}`} id="top">
       <div className="cinematic-grid-lines" aria-hidden="true" />
       <div className="hero-left signature-hero-copy cinematic-copy">
         <div className="signature-status-row cinematic-status-row">
