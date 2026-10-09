@@ -9,6 +9,7 @@ import './showpiece.css'
 import './evaluator.css'
 import './signature.css'
 import './cinematic.css'
+import './interactive-overrides.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
