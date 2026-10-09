@@ -1,12 +1,14 @@
 .personal-grid-with-portrait {
-  grid-template-columns: minmax(240px,.8fr) minmax(0,1fr) minmax(0,1fr) !important;
+  grid-template-columns: minmax(220px,.68fr) minmax(0,1fr) minmax(0,1fr) !important;
   gap: 18px !important;
   align-items: stretch;
 }
 
 .portrait-card {
   position: relative;
-  min-height: 470px;
+  width: min(100%, 340px);
+  min-height: 430px;
+  justify-self: center;
   overflow: hidden;
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,.075);
@@ -19,26 +21,28 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, transparent 34%, rgba(0,0,0,.18) 58%, rgba(0,0,0,.9) 100%),
-    radial-gradient(circle at 84% 12%, rgba(229,9,20,.16), transparent 28%);
+    linear-gradient(180deg, transparent 48%, rgba(0,0,0,.12) 67%, rgba(0,0,0,.86) 100%),
+    radial-gradient(circle at 84% 12%, rgba(229,9,20,.10), transparent 28%);
   pointer-events: none;
 }
 
 .portrait-card img {
   width: 100%;
-  height: 100%;
-  min-height: 470px;
+  height: 430px;
+  min-height: 0;
   object-fit: cover;
   object-position: center top;
   display: block;
-  filter: saturate(.9) contrast(1.02);
-  transform: scale(1.01);
-  transition: transform .7s cubic-bezier(.16,1,.3,1), filter .5s ease;
+  filter: none;
+  transform: none;
+  image-rendering: auto;
+  backface-visibility: hidden;
+  transition: filter .35s ease;
 }
 
 .portrait-card:hover img {
-  transform: scale(1.045);
-  filter: saturate(1) contrast(1.04);
+  transform: none;
+  filter: contrast(1.015) saturate(1.01);
 }
 
 .portrait-card-overlay {
@@ -89,6 +93,7 @@
     grid-template-columns: 1fr 1fr !important;
   }
   .portrait-card {
+    width: min(100%, 360px);
     grid-row: span 2;
   }
 }
@@ -99,11 +104,13 @@
     grid-template-columns: 1fr !important;
   }
   .portrait-card {
-    min-height: 420px;
+    width: min(100%, 360px);
+    min-height: 0;
     grid-row: auto;
   }
   .portrait-card img {
-    min-height: 420px;
+    height: auto;
+    aspect-ratio: 1135 / 1606;
   }
 }
 
