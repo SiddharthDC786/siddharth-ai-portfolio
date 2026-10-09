@@ -7,6 +7,7 @@ import './personalization.css'
 import './responsive-motion.css'
 import './showpiece.css'
 import './evaluator.css'
+import './signature.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
