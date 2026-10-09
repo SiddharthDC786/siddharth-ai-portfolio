@@ -1,0 +1,24 @@
+.cinematic-hero.direction-modal-open {
+  position: relative;
+  z-index: 25000 !important;
+  isolation: auto !important;
+  overflow: visible !important;
+}
+
+.cinematic-hero.direction-modal-open .experience-modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 26000 !important;
+  isolation: isolate;
+}
+
+.cinematic-hero.direction-modal-open .experience-modal {
+  position: relative;
+  z-index: 26001 !important;
+}
+
+.series-rail-shell,
+.series-rail,
+.series-episode-card {
+  z-index: auto;
+}
