@@ -7,7 +7,6 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import EngineeringMindset from './components/EngineeringMindset'
 import ChatAssistantV2 from './components/ChatAssistantV2'
-import Architecture from './components/Architecture'
 import Profiles from './components/Profiles'
 import Footer from './components/Footer'
 import MotionEffects from './components/MotionEffects'
@@ -155,7 +154,6 @@ function App() {
 
         <EngineeringMindset />
         <ChatAssistantV2 />
-        <Architecture />
         <Profiles />
       </main>
       <Footer />
