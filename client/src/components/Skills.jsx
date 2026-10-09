@@ -5,7 +5,7 @@ export default function Skills() {
     <section className="section signature-stack-section" id="skills">
       <div className="section-heading-row signature-heading">
         <div>
-          <div className="section-kicker">03 / ENGINEERING STACK</div>
+          <div className="section-kicker">04 / ENGINEERING STACK</div>
           <h2>Tools I have actually touched through learning and projects.</h2>
         </div>
         <p className="section-side-copy">Grouped by how I use them, not as a wall of logos. Some are current strengths; others are project exposure I am deliberately building on.</p>
