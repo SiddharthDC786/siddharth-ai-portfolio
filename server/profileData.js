@@ -1,13 +1,14 @@
 export const profile = {
   name: 'DC Siddharth',
   education: 'B.Tech Artificial Intelligence & Machine Learning, VNRVJIET, 2nd Year 1st Semester',
-  about: 'Siddharth is a second-year AIML student at VNRVJIET. He is deliberately exploring full-stack development, DSA and applied AI/ML before choosing one specialization. He prefers learning through projects and wants to build a strong technical base before deciding where to go deeper.',
+  cgpa: '9.53',
+  about: 'Siddharth is a second-year AIML student at VNRVJIET with a 9.53 CGPA. He is deliberately exploring full-stack development, backend systems, DSA and applied AI/ML before choosing one specialization. He prefers learning through projects and wants to build a strong technical base before deciding where to go deeper.',
   philosophy: 'Explore widely. Build consistently. Choose with clarity.',
   currentTraining: {
     name: 'VNRVJIET MERN Stack Training',
     topics: ['React', 'Node.js', 'Express', 'MongoDB', 'REST APIs', 'Frontend-backend integration']
   },
-  currentFocus: ['MERN Stack', 'C++', 'DSA', 'LeetCode', 'AI Engineering exploration', 'Data Engineering exploration', 'Backend systems'],
+  currentFocus: ['MERN Stack', 'Python backend development', 'C++', 'DSA', 'LeetCode', 'AI Engineering exploration', 'Data Engineering exploration', 'Backend systems'],
   learningStyle: 'Learn → Build → Break → Improve → Explain. Siddharth learns best by building and tries to understand why a technology is used, not only how to copy its syntax.',
   communityInvolvement: {
     name: 'Street Cause',
@@ -19,8 +20,8 @@ export const profile = {
     name: 'Vigil / investigation-ai',
     reason: 'Vigil is the project Siddharth enjoyed most because it combines AI, graph relationships, backend APIs, structured data and an interface for making complex investigation information easier to understand. It increased his curiosity about AI engineering, data systems and end-to-end intelligent products.'
   },
-  skills: ['React', 'Vite', 'MERN Stack', 'Node.js', 'Express', 'MongoDB', 'DSA', 'C', 'C++', 'Python', 'JavaScript', 'Tailwind'],
-  projectExposure: ['FastAPI', 'PostgreSQL', 'TensorFlow/Keras', 'CNN/Streamlit', 'NLP concepts', 'Neo4j', 'Graph analytics'],
+  skills: ['React', 'Vite', 'JavaScript', 'HTML', 'CSS', 'Tailwind', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Python', 'FastAPI', 'PostgreSQL', 'Neo4j', 'C', 'C++', 'DSA', 'LeetCode', 'TensorFlow', 'Keras', 'CNNs', 'OpenCV', 'Streamlit', 'Cytoscape.js', 'spaCy', 'RapidFuzz', 'Git', 'GitHub', 'Docker Compose', 'JWT', 'Zod'],
+  projectExposure: ['Graph analytics', 'Entity resolution', 'NLP concepts', 'REST APIs', 'Authentication', 'Role-based access control', 'Computer vision', 'Transfer learning workflows'],
   interests: ['AI Engineering', 'Data Engineering', 'Full-stack Development', 'Backend Systems', 'DSA', 'Applied Machine Learning'],
   careerDirection: 'Siddharth has not locked himself into one job title yet. He wants to build enough practical experience during college to choose a specialization based on what he has actually built and enjoyed, while aiming for a strong role at a good company.',
   projects: [
@@ -28,7 +29,7 @@ export const profile = {
       name: 'Vigil / investigation-ai',
       ownership: "Team project hosted on Siddharth's GitHub",
       description: 'An AI-powered criminal-network analysis system using case data, search, entity relationships, network graphs, timelines, NLP/entity-resolution ideas and graph analytics.',
-      technologies: ['React', 'Vite', 'FastAPI', 'Python', 'PostgreSQL', 'Neo4j', 'NLP'],
+      technologies: ['React', 'Vite', 'Tailwind', 'Cytoscape.js', 'FastAPI', 'Python', 'PostgreSQL', 'Neo4j', 'spaCy', 'RapidFuzz', 'Docker Compose'],
       contribution: 'Worked within a team stack spanning investigation UI, backend APIs, structured case data and graph/NLP concepts.',
       url: 'https://github.com/SiddharthDC786/investigation-ai',
       proof: 'https://github.com/SiddharthDC786/investigation-ai/blob/main/README.md'
@@ -37,7 +38,7 @@ export const profile = {
       name: 'CampusSpace AI',
       ownership: 'Collaborative project; Siddharth is a GitHub collaborator',
       description: 'A MERN campus resource-booking platform with JWT authentication, HTTP-only cookies, role-based access, validation, booking-conflict logic, notifications and student/admin workflows.',
-      technologies: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Zod'],
+      technologies: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT', 'Zod'],
       url: 'https://github.com/NikithPrasad/campusspace-ai',
       proof: 'https://github.com/NikithPrasad/campusspace-ai/blob/main/README.md'
     },
@@ -52,7 +53,7 @@ export const profile = {
     {
       name: 'AI Portfolio Assistant',
       ownership: 'Personal project',
-      description: 'A React/Vite portfolio connected to a Node/Express AI backend. The assistant answers profile-specific questions, provides proof links for selected technical claims and uses local fallbacks for common demo questions.',
+      description: 'A React/Vite portfolio connected to a Node/Express AI backend. The assistant supports open-ended profile conversations, recent-chat context, evidence-backed technical claims and model fallbacks for reliability.',
       technologies: ['React', 'Vite', 'Node.js', 'Express', 'Gemini API'],
       url: 'https://github.com/SiddharthDC786/siddharth-ai-portfolio'
     },
