@@ -6,7 +6,7 @@ import TourModal from './components/TourModal'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import EngineeringMindset from './components/EngineeringMindset'
-import ChatAssistant from './components/ChatAssistant'
+import ChatAssistantV2 from './components/ChatAssistantV2'
 import Architecture from './components/Architecture'
 import Profiles from './components/Profiles'
 import Footer from './components/Footer'
@@ -154,7 +154,7 @@ function App() {
         </section>
 
         <EngineeringMindset />
-        <ChatAssistant />
+        <ChatAssistantV2 />
         <Architecture />
         <Profiles />
       </main>
