@@ -1,6 +1,28 @@
+import { useEffect, useState } from 'react'
 import { signature } from '../data/signatureData'
 
+const directionLanes = [
+  { label: 'FULL STACK', title: 'MERN', text: 'Building complete flows with React, Node.js, Express and MongoDB.' },
+  { label: 'BACKEND', title: 'Python', text: 'Exploring API design and backend systems through FastAPI and project work.' },
+  { label: 'PROBLEM SOLVING', title: 'C++ + DSA', text: 'Strengthening fundamentals through LeetCode and consistent practice.' },
+  { label: 'APPLIED AI', title: 'AI / ML', text: 'Using computer vision, NLP and graph ideas inside real student projects.' }
+]
+
 export default function Hero({ onOpenTour }) {
+  const [directionOpen, setDirectionOpen] = useState(false)
+
+  useEffect(() => {
+    if (!directionOpen) return undefined
+    const onKey = event => event.key === 'Escape' && setDirectionOpen(false)
+    window.addEventListener('keydown', onKey)
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = previous
+    }
+  }, [directionOpen])
+
   return (
     <section className="hero signature-hero cinematic-hero container" id="top">
       <div className="cinematic-grid-lines" aria-hidden="true" />
@@ -34,22 +56,50 @@ export default function Hero({ onOpenTour }) {
         </div>
       </div>
 
-      <aside className="cinematic-poster" aria-label="Current technical direction">
-        <div className="poster-glow" />
-        <div className="poster-noise" />
-        <div className="poster-topline"><span>SEASON 02</span><b>2026</b></div>
-        <div className="poster-core">
-          <small>NOW PLAYING</small>
+      <button className="signature-orbit cinematic-orbit orbit-launcher" type="button" onClick={() => setDirectionOpen(true)} aria-label="Open current technical direction">
+        <div className="orbit-ring orbit-ring-one" />
+        <div className="orbit-ring orbit-ring-two" />
+        <div className="orbit-core">
+          <span>NOW</span>
           <strong>BUILDING<br />RANGE</strong>
-          <p>before choosing depth</p>
+          <small>before choosing depth</small>
         </div>
-        <div className="poster-stack">
-          <span>React</span><span>Node.js</span><span>Python</span><span>C++</span><span>AI / ML</span>
+        <span className="orbit-chip chip-react">React</span>
+        <span className="orbit-chip chip-python">Python</span>
+        <span className="orbit-chip chip-node">Node.js</span>
+        <span className="orbit-chip chip-cpp">C++</span>
+        <span className="orbit-chip chip-ai">AI / ML</span>
+        <span className="orbit-click-hint">CLICK TO EXPLORE ↗</span>
+      </button>
+
+      {directionOpen && (
+        <div className="experience-modal-backdrop" role="presentation" onMouseDown={() => setDirectionOpen(false)}>
+          <section className="experience-modal orbit-experience-modal" role="dialog" aria-modal="true" aria-labelledby="direction-title" onMouseDown={event => event.stopPropagation()}>
+            <div className="experience-modal-topline">
+              <span>NOW BUILDING</span>
+              <button type="button" onClick={() => setDirectionOpen(false)} aria-label="Close current direction">×</button>
+            </div>
+            <div className="experience-modal-heading">
+              <span>THE IDEA BEHIND “BUILDING RANGE”</span>
+              <h2 id="direction-title">I am exploring enough to choose depth with evidence.</h2>
+              <p>I do not want to choose a specialization just because the title sounds good. Right now, I am deliberately testing four technical lanes through actual work.</p>
+            </div>
+            <div className="direction-lanes">
+              {directionLanes.map((lane, index) => (
+                <article key={lane.title}>
+                  <span>0{index + 1} / {lane.label}</span>
+                  <h3>{lane.title}</h3>
+                  <p>{lane.text}</p>
+                </article>
+              ))}
+            </div>
+            <div className="experience-modal-actions">
+              <a href="#current-focus" onClick={() => setDirectionOpen(false)}>See what I am learning ↓</a>
+              <a href="#projects" onClick={() => setDirectionOpen(false)}>See the evidence ↓</a>
+            </div>
+          </section>
         </div>
-        <div className="poster-footer">
-          <span>LEARN</span><i /> <span>BUILD</span><i /> <span>BREAK</span><i /> <span>IMPROVE</span><i /> <span>EXPLAIN</span>
-        </div>
-      </aside>
+      )}
     </section>
   )
 }
