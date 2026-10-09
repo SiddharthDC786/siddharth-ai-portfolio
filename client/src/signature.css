@@ -1,0 +1,361 @@
+/* Signature portfolio layer — inspired by high-end interactive portfolios, not a copy. */
+
+:root {
+  --signature-accent: #9b87ff;
+  --signature-cyan: #67e8f9;
+  --signature-ink: #f6f7fb;
+  --signature-muted: #8c97aa;
+}
+
+.signature-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 9999;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--signature-accent), var(--signature-cyan));
+  pointer-events: none;
+}
+
+.signature-cursor-dot,
+.signature-cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 999px;
+}
+
+.signature-cursor-dot {
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  background: #fff;
+}
+
+.signature-cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgba(255,255,255,.42);
+  background: rgba(255,255,255,.015);
+  backdrop-filter: blur(2px);
+  transition: width .28s cubic-bezier(.22,1,.36,1), height .28s cubic-bezier(.22,1,.36,1), margin .28s cubic-bezier(.22,1,.36,1), border-color .28s ease, background .28s ease;
+}
+
+.custom-cursor-enabled body,
+.custom-cursor-enabled a,
+.custom-cursor-enabled button { cursor: none; }
+.custom-cursor-enabled .signature-cursor-dot,
+.custom-cursor-enabled .signature-cursor-ring { opacity: 1; }
+.cursor-active .signature-cursor-ring {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border-color: rgba(155,135,255,.64);
+  background: rgba(155,135,255,.07);
+}
+
+.magnetic {
+  transform: translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  transition: transform .42s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
+}
+
+/* HERO */
+.signature-hero {
+  position: relative;
+  min-height: min(860px, calc(100vh - 60px));
+  grid-template-columns: minmax(0, 1.16fr) minmax(380px, .84fr);
+  gap: clamp(42px, 7vw, 110px);
+  align-items: center;
+  padding-top: 74px;
+  padding-bottom: 70px;
+}
+
+.signature-hero::before {
+  content: '';
+  position: absolute;
+  width: min(70vw, 840px);
+  height: min(70vw, 840px);
+  left: -34vw;
+  top: -24vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(105,80,200,.11), rgba(105,80,200,.025) 45%, transparent 70%);
+  pointer-events: none;
+}
+
+.signature-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.hero-location {
+  color: #6f7a8c;
+  font-size: 10px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.signature-eyebrow {
+  margin-bottom: 16px;
+  color: #8a95a8;
+  letter-spacing: .17em;
+}
+
+.signature-name {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(68px, 8.6vw, 132px) !important;
+  line-height: .84 !important;
+  letter-spacing: -.065em !important;
+  font-weight: 650 !important;
+}
+
+.signature-name span {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,.74);
+  background: none !important;
+  -webkit-background-clip: initial !important;
+}
+
+.signature-statement {
+  margin: 32px 0 16px;
+  font: 500 clamp(23px, 2.3vw, 34px)/1.2 'Space Grotesk', sans-serif;
+  letter-spacing: -.025em;
+  color: #d8deea;
+  max-width: 760px;
+}
+.signature-statement em { font-style: normal; color: #a996ff; }
+
+.signature-subtitle {
+  max-width: 750px;
+  font-size: 15px;
+  line-height: 1.72;
+  color: #8e9aaf;
+}
+.signature-subtitle strong { color: #dde3ee; font-weight: 550; }
+
+.signature-actions { margin-top: 30px; }
+
+.signature-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 1px;
+  margin-top: 40px;
+  border: 1px solid rgba(255,255,255,.065);
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(255,255,255,.06);
+}
+.signature-metrics > div {
+  min-width: 0;
+  padding: 17px 16px;
+  background: rgba(6,9,15,.88);
+  display: grid;
+  gap: 7px;
+}
+.signature-metrics span {
+  color: #647085;
+  font-size: 8px;
+  letter-spacing: .13em;
+}
+.signature-metrics strong {
+  color: #e7ebf2;
+  font: 550 12px/1.2 'Space Grotesk';
+  overflow-wrap: anywhere;
+}
+.signature-metrics > div:first-child strong {
+  color: #b8aaff;
+  font-size: 22px;
+  letter-spacing: -.04em;
+}
+
+/* Orbital technical portrait */
+.signature-orbit {
+  position: relative;
+  width: min(100%, 510px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+.signature-orbit::before {
+  content: '';
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 30%, rgba(155,135,255,.18), rgba(36,31,72,.10) 38%, rgba(7,10,16,.9) 72%);
+  box-shadow: 0 40px 100px rgba(0,0,0,.35), inset 0 0 60px rgba(139,92,246,.06);
+  z-index: -1;
+}
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.orbit-ring-one { inset: 6%; }
+.orbit-ring-two { inset: 22%; border-style: dashed; border-color: rgba(155,135,255,.18); }
+.orbit-core {
+  width: 47%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.11);
+  background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+  backdrop-filter: blur(14px);
+  box-shadow: 0 25px 70px rgba(0,0,0,.32);
+}
+.orbit-core span { color: #716b86; font-size: 8px; letter-spacing: .22em; }
+.orbit-core strong { margin: 8px 0; color: #f5f5f7; font: 650 clamp(18px,2vw,27px)/.98 'Space Grotesk'; letter-spacing: -.045em; }
+.orbit-core small { color: #7c8799; font-size: 9px; }
+.orbit-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.09);
+  background: rgba(9,12,20,.82);
+  backdrop-filter: blur(12px);
+  color: #c4cbd7;
+  font: 500 10px 'Space Grotesk';
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+  animation: signatureFloat 7s ease-in-out infinite;
+}
+.chip-react { top: 11%; left: 16%; animation-delay: -.8s; }
+.chip-python { top: 26%; right: 2%; animation-delay: -2.1s; }
+.chip-node { bottom: 13%; right: 14%; animation-delay: -3.8s; }
+.chip-cpp { bottom: 17%; left: 4%; animation-delay: -5.2s; }
+.chip-ai { top: 43%; left: -3%; animation-delay: -1.7s; }
+
+@keyframes signatureFloat {
+  0%,100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(0,-7px,0); }
+}
+
+/* ENGINEERING STACK */
+.signature-stack-section { overflow: hidden; }
+.signature-heading h2 { max-width: 760px; }
+.stack-marquee {
+  width: 100vw;
+  margin: 42px calc(50% - 50vw) 34px;
+  overflow: hidden;
+  border-block: 1px solid rgba(255,255,255,.055);
+  background: rgba(255,255,255,.01);
+}
+.stack-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: stackRail 34s linear infinite;
+}
+.stack-marquee-track span {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 15px 22px;
+  color: #8792a5;
+  font: 500 11px 'Space Grotesk';
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.stack-marquee-track i { color: #514773; font-style: normal; font-size: 8px; }
+@keyframes stackRail { to { transform: translateX(-50%); } }
+
+.signature-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-left: 1px solid rgba(255,255,255,.07);
+}
+.signature-stack-card {
+  min-width: 0;
+  padding: 27px;
+  min-height: 220px;
+  border-right: 1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.012);
+  transition: background .4s ease, transform .45s cubic-bezier(.22,1,.36,1), border-color .4s ease;
+}
+.stack-card-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.stack-card-top span { color: #596477; font: 500 9px 'Space Grotesk'; letter-spacing: .15em; }
+.stack-card-top b { color: #f1f3f7; font: 600 19px 'Space Grotesk'; }
+.signature-stack-card > p { margin: 22px 0 26px; color: #7f8a9c; font-size: 12px; }
+.stack-tool-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.stack-tool-list span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.07);
+  color: #9ba7b9;
+  background: rgba(255,255,255,.018);
+  font-size: 9px;
+}
+
+@media (hover:hover) {
+  .signature-stack-card:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(145deg, rgba(155,135,255,.055), rgba(255,255,255,.015));
+    border-color: rgba(155,135,255,.18);
+  }
+
+  .project-card:hover {
+    border-color: rgba(155,135,255,.21) !important;
+    box-shadow: 0 28px 80px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.025) !important;
+  }
+}
+
+/* Slightly more editorial typography throughout */
+.section h2 { letter-spacing: -.045em; }
+.section-kicker { letter-spacing: .17em; }
+.project-card h3 { letter-spacing: -.035em; }
+
+@media (max-width: 1180px) {
+  .signature-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 58px; }
+  .signature-hero-copy { max-width: 940px; }
+  .signature-orbit { width: min(78vw, 480px); margin-top: 12px; }
+  .signature-stack-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width: 760px) {
+  .signature-status-row { align-items: flex-start; flex-direction: column; margin-bottom: 24px; }
+  .hero-location { display: none; }
+  .signature-name { font-size: clamp(58px, 20vw, 92px) !important; }
+  .signature-statement { font-size: 22px; margin-top: 25px; }
+  .signature-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .signature-orbit { width: min(92vw, 420px); }
+  .signature-stack-grid { grid-template-columns: 1fr; }
+  .stack-marquee-track { animation-duration: 28s; }
+}
+
+@media (max-width: 480px) {
+  .signature-hero { padding-top: 38px; gap: 20px; }
+  .signature-name { font-size: clamp(52px, 19vw, 76px) !important; }
+  .signature-metrics { grid-template-columns: 1fr 1fr; }
+  .signature-metrics > div { padding: 14px 12px; }
+  .orbit-chip { min-height: 32px; padding-inline: 10px; font-size: 8px; }
+  .signature-stack-card { padding: 22px; min-height: 190px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-chip,
+  .stack-marquee-track { animation: none !important; }
+  .signature-cursor-dot,
+  .signature-cursor-ring { display: none !important; }
+}
