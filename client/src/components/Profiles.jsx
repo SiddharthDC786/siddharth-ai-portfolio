@@ -12,7 +12,7 @@ export default function Profiles() {
     <section className="section" id="profiles">
       <div className="section-heading-row">
         <div>
-          <div className="section-kicker">08 / PROFILES</div>
+          <div className="section-kicker">09 / PROFILES</div>
           <h2>Find me beyond this page.</h2>
         </div>
       </div>
