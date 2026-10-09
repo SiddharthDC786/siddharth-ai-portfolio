@@ -56,7 +56,7 @@ export default function Projects() {
     <section className="section" id="projects">
       <div className="section-heading-row">
         <div>
-          <div className="section-kicker">02 / PROJECTS</div>
+          <div className="section-kicker">03 / PROJECTS</div>
           <h2>Not just what I built — how I thought about it.</h2>
         </div>
         <a href={profile.links.github} target="_blank" rel="noreferrer">View GitHub ↗</a>
