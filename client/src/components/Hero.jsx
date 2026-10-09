@@ -12,15 +12,15 @@ export default function Hero({ onOpenTour }) {
           I am learning <strong>full-stack development through VNRVJIET's MERN training</strong>, strengthening <strong>C++ + DSA</strong>, and using real projects to explore where I want to go deeper in <strong>AI and data</strong>.
         </p>
         <div className="hero-actions">
-          <a className="primary-btn" href="#current-focus">See what I'm learning <span>↘</span></a>
+          <a className="primary-btn" href="#ask">Open evaluator AI <span>✦</span></a>
           <button className="secondary-btn tour-btn" onClick={onOpenTour}>▶ 60-sec technical tour</button>
-          <a className="secondary-btn" href="#ask">Ask my portfolio <span>✦</span></a>
+          <a className="secondary-btn" href="#projects">Explore project evidence <span>↘</span></a>
         </div>
         <div className="hero-meta">
           <div><span>COLLEGE</span><strong>VNRVJIET</strong></div>
           <div><span>PROGRAM</span><strong>AIML</strong></div>
           <div><span>CURRENT TRAINING</span><strong>MERN Stack</strong></div>
-          <div><span>FOCUS</span><strong>C++ · DSA · AI/Data</strong></div>
+          <div><span>PORTFOLIO EDGE</span><strong>Evidence-aware evaluator AI</strong></div>
         </div>
       </div>
 
@@ -44,9 +44,9 @@ export default function Hero({ onOpenTour }) {
     "CampusSpace AI",
     "Malaria Detection"
   ],
-  "mindset": "learn by building"
+  "portfolio_mode": "evaluator AI"
 }`}</pre>
-        <div className="panel-note">I have not chosen one specialization yet. I am building enough range to make that decision from real experience, not guesswork.</div>
+        <div className="panel-note">The assistant is designed to do more than chat: it can summarize my profile, verify selected technical claims, surface evidence, and admit where my profile is still incomplete.</div>
       </aside>
     </section>
   )
