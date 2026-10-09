@@ -163,7 +163,7 @@ export default function ChatAssistantV2() {
 
   return <section className="section ask-section" id="ask">
     <div className="ask-copy">
-      <div className="section-kicker">07 / INTERACTIVE AI</div>
+      <div className="section-kicker">08 / INTERACTIVE AI</div>
       <h2>Have a conversation with <span>my portfolio.</span></h2>
       <p>It is not limited to preset questions. Ask naturally, refer back to earlier answers, compare projects, ask “why?”, or switch modes depending on whether you want to explore or evaluate my profile.</p>
 
