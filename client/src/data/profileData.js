@@ -24,7 +24,7 @@ export const profile = {
   favoriteProject: {
     title: 'Vigil / investigation-ai',
     kicker: 'THE PROJECT I ENJOYED MOST',
-    text: 'Vigil is the project I connected with most because it brought together several things I find interesting at once: AI, graph-based relationships, backend APIs, structured data and an interface that helps make complex information easier to understand. It made me more curious about AI engineering, data systems and how intelligent products are actually built end to end.',
+    text: 'Vigil is the project I connected with most because it brought together several things I find interesting at once: AI, graph-based relationships, backend APIs, structured data and an interface that helps make complex information easier to understand. I also took responsibility as team lead for coordinating work through GitHub while contributing to backend and API development. It made me more curious about AI engineering, data systems and how intelligent products are actually built end to end.',
     link: 'https://github.com/SiddharthDC786/investigation-ai'
   },
   aboutDetails: [
@@ -99,11 +99,11 @@ export const profile = {
   projects: [
     {
       title: 'Vigil / investigation-ai',
-      tag: 'Team Project · AI / Graph Analytics',
+      tag: 'Team Lead · Backend / AI / Graph Analytics',
       description:
         'An AI-powered criminal-network analysis system that turns case data into searchable entities, relationship graphs, timelines and investigation views.',
       contribution:
-        'Worked within a team stack spanning the investigation UI, backend APIs, structured case data and graph/NLP concepts while learning how messy records become usable investigation views.',
+        'Worked primarily on backend and API development while serving as team lead. I coordinated the team through GitHub, managed repository workflow and integrations, and helped connect structured case data, API endpoints and graph/NLP-oriented features into the investigation system.',
       problem:
         'Investigation data can be scattered across FIRs, call records and other sources, making relationships between people and events hard to see quickly.',
       approach:
@@ -115,9 +115,9 @@ export const profile = {
         ['Cytoscape.js', 'Interactive network visualisation'],
         ['RapidFuzz / NLP', 'Identity matching and entity-resolution concepts']
       ],
-      highlights: ['Cross-source search', 'Relationship graph', 'Case timeline', 'Entity resolution concepts', 'Graph analytics'],
+      highlights: ['Backend APIs', 'Team leadership', 'GitHub coordination', 'Cross-source search', 'Relationship graph', 'Entity-resolution concepts'],
       learned:
-        'The difficult part of an AI system is often not the model alone; data quality, identity matching, provenance and explainability matter just as much.',
+        'The difficult part of an AI system is often not the model alone; data quality, identity matching, provenance, API design and coordinating integrations across a team matter just as much.',
       tech: ['React', 'Vite', 'FastAPI', 'Python', 'PostgreSQL', 'Neo4j', 'NLP'],
       github: 'https://github.com/SiddharthDC786/investigation-ai',
       proof: 'https://github.com/SiddharthDC786/investigation-ai/blob/main/README.md',
@@ -126,11 +126,11 @@ export const profile = {
     },
     {
       title: 'CampusSpace AI',
-      tag: 'Collaborative MERN Project',
+      tag: 'Collaborative MERN Project · Backend / APIs',
       description:
         'A campus resource-booking platform for classrooms, labs, seminar halls and other shared spaces, with student and admin workflows.',
       contribution:
-        'Collaborated on a full MERN application with authenticated student/admin flows, resource availability, booking conflicts, notifications and validated REST APIs.',
+        'Worked on the backend and REST API layer for the MERN application, including authenticated user/admin flows, booking and resource operations, validation, conflict-aware business rules and backend integration with MongoDB.',
       problem:
         'Shared campus rooms and facilities are difficult to coordinate when availability, approvals and booking conflicts are handled manually.',
       approach:
@@ -142,9 +142,9 @@ export const profile = {
         ['RBAC', 'Separate USER and ADMIN permissions'],
         ['React / Vite', 'Fast, component-based booking interface']
       ],
-      highlights: ['JWT authentication', 'HTTP-only cookies', 'USER / ADMIN RBAC', 'Zod validation', 'Conflict-aware booking', 'Notifications'],
+      highlights: ['REST APIs', 'JWT authentication', 'HTTP-only cookies', 'USER / ADMIN RBAC', 'Zod validation', 'Conflict-aware booking'],
       learned:
-        'Full-stack quality comes from enforcing the same business rules at multiple layers, not only from making the interface look complete.',
+        'Full-stack quality comes from enforcing business rules, permissions and validation in the backend rather than relying on the interface alone.',
       tech: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Zod'],
       github: 'https://github.com/NikithPrasad/campusspace-ai',
       proof: 'https://github.com/NikithPrasad/campusspace-ai/blob/main/README.md',
