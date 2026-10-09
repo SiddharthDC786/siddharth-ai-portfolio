@@ -7,7 +7,25 @@ import { profile } from './profileData.js'
 const app = express()
 const PORT = process.env.PORT || 5050
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }))
+const configuredOrigins = String(process.env.CLIENT_URLS || process.env.CLIENT_URL || '')
+  .split(',')
+  .map(value => value.trim())
+  .filter(Boolean)
+
+const allowedOrigins = new Set([
+  'http://localhost:5173',
+  'https://siddharth-ai-portfolio.onrender.com',
+  ...configuredOrigins
+])
+
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin) return callback(null, true)
+    if (allowedOrigins.has(origin)) return callback(null, true)
+    if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) return callback(null, true)
+    return callback(new Error('Origin not allowed by CORS'))
+  }
+}))
 app.use(express.json({ limit: '96kb' }))
 
 app.get('/api/health', (_req, res) => {
@@ -31,8 +49,6 @@ app.post('/api/chat', async (req, res) => {
 
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
 
-  // For a portfolio chat, responsiveness matters more than maximum model depth.
-  // Flash-Lite is the primary model; the larger Flash models are fallbacks.
   const models = [...new Set([
     'gemini-3.5-flash-lite',
     'gemini-3.1-flash-lite',
