@@ -4,28 +4,39 @@ import { profile } from '../data/profileData'
 const caseStudyMeta = {
   'Vigil / investigation-ai': {
     visual: 'network',
+    owned: ['Backend', 'APIs', 'Team lead', 'GitHub coordination'],
     architecture: ['React / Vite', 'FastAPI', 'PostgreSQL', 'Neo4j + NLP', 'Investigation views'],
     challenge: 'The difficult part is identity, not just extraction: noisy records can refer to the same person in different ways, so entity resolution and provenance matter before a graph can be trusted.',
     next: 'I would push the next iteration toward stronger confidence scoring, clearer provenance on every relationship and better evaluation of entity-resolution quality.'
   },
   'CampusSpace AI': {
     visual: 'booking',
+    owned: ['Backend', 'REST APIs', 'Auth flows', 'Booking logic'],
     architecture: ['React / Vite', 'REST API', 'Express', 'MongoDB', 'RBAC + booking rules'],
     challenge: 'Booking systems look simple until two people request the same slot. The backend has to enforce conflicts and permissions even if the UI already looks correct.',
     next: 'I would add stronger concurrency handling, richer admin analytics and a cleaner audit trail for booking approvals and status changes.'
   },
   'Malaria Detection System': {
     visual: 'vision',
+    owned: ['Streamlit UI', 'CNN integration', 'Preprocessing', 'Prediction pipeline'],
     architecture: ['Image upload', 'OpenCV preprocessing', 'CNN inference', 'Prediction logic', 'Streamlit result'],
     challenge: 'The uploaded image has to be transformed exactly as the model expects. A mismatch between training preprocessing and inference preprocessing can make a good model behave badly in the app.',
     next: 'I would add better confidence communication, error handling for poor-quality inputs and a clearer evaluation page showing model limitations and metrics.'
   },
   'AI Portfolio Assistant': {
     visual: 'assistant',
+    owned: ['React experience', 'AI integration', 'Grounding', 'Fallback reliability'],
     architecture: ['React / Vite', 'Structured profile data', 'Node / Express', 'Gemini API', 'Grounded answer + fallback'],
     challenge: 'The assistant should be useful without inventing achievements. Grounding, proof links, fallbacks and failure states matter more here than simply connecting a model API.',
     next: 'I would add retrieval over project documentation, stronger source-level citations and lightweight analytics on what evaluators actually ask.'
   }
+}
+
+const askPortfolioAI = (prompt, mode = 'explore') => {
+  document.getElementById('ask')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  window.setTimeout(() => {
+    window.dispatchEvent(new CustomEvent('portfolio-ai-question', { detail: { prompt, mode } }))
+  }, 420)
 }
 
 function ProjectVisual({ type }) {
@@ -65,9 +76,17 @@ function ProjectVisual({ type }) {
   </div>
 }
 
+function OwnershipProof({ items, compact = false }) {
+  return <div className={`ownership-proof ${compact ? 'compact' : ''}`}>
+    <span>WHAT I OWNED</span>
+    <div>{items.map(item => <b key={item}>{item}</b>)}</div>
+  </div>
+}
+
 function CaseStudy({ project, onClose }) {
   const meta = caseStudyMeta[project.title] || {
     visual: 'assistant',
+    owned: ['Project contribution'],
     architecture: project.tech.slice(0, 5),
     challenge: project.learned,
     next: 'Continue improving the architecture, usability and evidence around the project.'
@@ -84,6 +103,16 @@ function CaseStudy({ project, onClose }) {
     }
   }, [onClose])
 
+  const askAboutProject = (kind) => {
+    const prompts = {
+      contribution: `What did Siddharth personally contribute to ${project.title}? Separate his work from the team project and show the strongest evidence.`,
+      architecture: `Explain the architecture of ${project.title} clearly, then tell me which parts Siddharth personally worked on.`,
+      interview: `Interview me on ${project.title}. Ask one technical question at a time based only on Siddharth's real contribution and project stack.`
+    }
+    onClose()
+    askPortfolioAI(prompts[kind], kind === 'interview' ? 'interview' : 'explore')
+  }
+
   return <div className="case-study-backdrop" role="presentation" onMouseDown={onClose}>
     <article className="case-study-modal" role="dialog" aria-modal="true" aria-labelledby="case-study-title" onMouseDown={event => event.stopPropagation()}>
       <header className="case-study-nav">
@@ -96,6 +125,7 @@ function CaseStudy({ project, onClose }) {
           <span>SELECTED WORK</span>
           <h2 id="case-study-title">{project.title}</h2>
           <p>{project.description}</p>
+          <OwnershipProof items={meta.owned} />
           <div className="case-tech-row">{project.tech.map(tech => <span key={tech}>{tech}</span>)}</div>
         </div>
         <ProjectVisual type={meta.visual} />
@@ -107,15 +137,24 @@ function CaseStudy({ project, onClose }) {
       </section>
 
       <section className="case-study-section architecture-section">
-        <div className="case-section-heading"><span className="case-label">03 / SYSTEM ARCHITECTURE</span><h3>From input to useful output.</h3></div>
-        <div className="architecture-rail">
-          {meta.architecture.map((step, index) => <div className="architecture-step" key={step}><small>0{index + 1}</small><strong>{step}</strong>{index < meta.architecture.length - 1 && <i>→</i>}</div>)}
+        <div className="case-section-heading"><span className="case-label">03 / SYSTEM ARCHITECTURE</span><h3>From input to useful output.</h3><p className="architecture-note">The red signal moves through the actual system flow — not a decorative diagram.</p></div>
+        <div className="architecture-rail animated-architecture">
+          {meta.architecture.map((step, index) => <div className="architecture-step" key={step} style={{ '--architecture-index': index }}><span className="architecture-pulse" /><small>0{index + 1}</small><strong>{step}</strong>{index < meta.architecture.length - 1 && <i>→</i>}</div>)}
         </div>
       </section>
 
       <section className="case-study-section case-contribution">
         <div><span className="case-label">04 / MY CONTRIBUTION</span><h3>What I can actually explain.</h3><p>{project.contribution}</p></div>
         <div className="case-highlight-list">{project.highlights.map(item => <span key={item}>✓ {item}</span>)}</div>
+      </section>
+
+      <section className="case-study-section contextual-ai-panel">
+        <div><span className="case-label">AI / PROJECT CONTEXT</span><h3>Question the project, not just the résumé.</h3><p>The assistant opens with this project already in context and keeps personal contribution separate from team work.</p></div>
+        <div className="contextual-ai-actions">
+          <button onClick={() => askAboutProject('contribution')}>What did Siddharth build? <span>✦</span></button>
+          <button onClick={() => askAboutProject('architecture')}>Explain the architecture <span>✦</span></button>
+          <button className="interview-project-btn" onClick={() => askAboutProject('interview')}>Interview me on this project <span>→</span></button>
+        </div>
       </section>
 
       <section className="case-study-section">
@@ -136,7 +175,7 @@ function CaseStudy({ project, onClose }) {
         <div>
           {project.github && <a className="primary-btn" href={project.github} target="_blank" rel="noreferrer">Open repository ↗</a>}
           {project.proof && <a className="secondary-btn" href={project.proof} target="_blank" rel="noreferrer">View proof ↗</a>}
-          <a className="secondary-btn" href="#ask" onClick={onClose}>Ask AI about it ✦</a>
+          <button className="secondary-btn" onClick={() => askAboutProject('contribution')}>Ask AI about it ✦</button>
         </div>
       </footer>
     </article>
@@ -145,6 +184,13 @@ function CaseStudy({ project, onClose }) {
 
 export default function Projects() {
   const [selected, setSelected] = useState(null)
+
+  const askFromCard = (project, interview = false) => {
+    const prompt = interview
+      ? `Interview me on ${project.title}. Ask one technical question at a time based on Siddharth's actual contribution and project stack.`
+      : `What did Siddharth personally contribute to ${project.title}? Explain the project briefly, then separate his work from the team's work.`
+    askPortfolioAI(prompt, interview ? 'interview' : 'explore')
+  }
 
   return <section className="section premium-projects-section" id="projects">
     <div className="section-heading-row">
@@ -157,14 +203,19 @@ export default function Projects() {
 
     <div className="projects-grid premium-project-grid">
       {profile.projects.map((project, index) => {
-        const meta = caseStudyMeta[project.title] || { visual: 'assistant' }
-        return <article className="project-card premium-project-card" key={project.title}>
-          <div className="project-card-head"><div><span className="project-number">0{index + 1}</span><span className="project-tag">{project.tag}</span></div><button type="button" onClick={() => setSelected(project)} aria-label={`Open ${project.title} case study`}>↗</button></div>
+        const meta = caseStudyMeta[project.title] || { visual: 'assistant', owned: ['Project contribution'] }
+        return <article className={`project-card premium-project-card ${index === 0 ? 'flagship-project' : ''}`} key={project.title}>
+          <div className="project-card-head"><div><span className="project-number">0{index + 1}</span><span className="project-tag">{project.tag}</span>{index === 0 && <span className="flagship-label">FLAGSHIP</span>}</div><button type="button" onClick={() => setSelected(project)} aria-label={`Open ${project.title} case study`}>↗</button></div>
           <ProjectVisual type={meta.visual} />
           <h3>{project.title}</h3>
           <p>{project.description}</p>
+          <OwnershipProof items={meta.owned} compact />
           <div className="contribution compact-contribution"><span>MY CONTRIBUTION</span><p>{project.contribution}</p></div>
           <div className="tech-row">{project.tech.slice(0, 6).map(tech => <span key={tech}>{tech}</span>)}</div>
+          <div className="project-ai-actions">
+            <button onClick={() => askFromCard(project)}>Ask AI about this ✦</button>
+            <button onClick={() => askFromCard(project, true)}>Interview me →</button>
+          </div>
           <div className="project-links project-links-split"><button className="text-btn case-study-trigger" onClick={() => setSelected(project)}>Open case study →</button>{project.github && <a href={project.github} target="_blank" rel="noreferrer">Repository ↗</a>}</div>
         </article>
       })}
