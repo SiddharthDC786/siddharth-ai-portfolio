@@ -6,6 +6,7 @@ import './refinement.css'
 import './personalization.css'
 import './responsive-motion.css'
 import './showpiece.css'
+import './evaluator.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
