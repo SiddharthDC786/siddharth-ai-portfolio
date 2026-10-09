@@ -209,6 +209,18 @@
 }
 .experience-modal-actions a + a { background: transparent; color: #f3eee7; }
 
+/* Keep the custom cursor above every interactive overlay. */
+.signature-cursor-dot,
+.signature-cursor-ring {
+  z-index: 30000 !important;
+}
+
+.custom-cursor-enabled .experience-modal-backdrop,
+.custom-cursor-enabled .experience-modal,
+.custom-cursor-enabled .experience-modal * {
+  cursor: none !important;
+}
+
 @media (max-width: 760px) {
   .cinematic-orbit { width: min(92vw, 430px); }
   .experience-modal-backdrop { padding: 12px; }
