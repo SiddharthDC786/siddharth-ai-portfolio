@@ -30,8 +30,15 @@ app.post('/api/chat', async (req, res) => {
   if (!process.env.GEMINI_API_KEY) return res.status(503).json({ error: 'AI API is not configured.' })
 
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
-  const requestedModel = process.env.GEMINI_MODEL || 'gemini-3.8-flash'
-  const models = [...new Set([requestedModel, 'gemini-3.5-flash-lite'])]
+
+  // For a portfolio chat, responsiveness matters more than maximum model depth.
+  // Flash-Lite is the primary model; the larger Flash models are fallbacks.
+  const models = [...new Set([
+    'gemini-3.5-flash-lite',
+    'gemini-3.1-flash-lite',
+    process.env.GEMINI_MODEL || 'gemini-3.8-flash',
+    'gemini-3.8-flash'
+  ])]
 
   const systemContext = `
 You are Siddharth's interactive portfolio assistant.
@@ -67,7 +74,7 @@ ${JSON.stringify(profile, null, 2)}
         model,
         contents,
         config: {
-          maxOutputTokens: 500,
+          maxOutputTokens: 420,
           temperature: 0.65
         }
       })
@@ -80,11 +87,6 @@ ${JSON.stringify(profile, null, 2)}
       lastError = error
       const status = errorStatus(error)
       console.error(`Gemini model ${model} failed${status ? ` (${status})` : ''}:`, error?.message || error)
-
-      // Move immediately to the fallback model for capacity/rate-limit failures.
-      if (![429, 500, 502, 503, 504].includes(status) && model === requestedModel) {
-        break
-      }
     }
   }
 
