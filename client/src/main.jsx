@@ -10,6 +10,7 @@ import './evaluator.css'
 import './signature.css'
 import './cinematic.css'
 import './interactive-overrides.css'
+import './top-tier.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
