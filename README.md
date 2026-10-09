@@ -4,7 +4,8 @@
 
 ## Live Demo
 
-**Portfolio:** https://siddharth-ai-portfolio.onrender.com
+**Portfolio:** https://siddharth-ai-portfolio.vercel.app  
+**AI Backend:** https://siddharth-ai-portfolio-api.onrender.com
 
 A selection-focused personal portfolio built for a college technical-domain round. Instead of treating the mandatory chatbot as an add-on, the entire experience is built around one idea:
 
@@ -72,6 +73,13 @@ Node / Express
 **AI:** Gemini API via `@google/genai`  
 **Data:** Structured JavaScript profile objects  
 **Reliability:** Deterministic local fallback responses
+
+## Deployment
+
+**Frontend:** Vercel  
+**Backend:** Render
+
+The frontend is deployed separately for faster loading, while the AI backend remains on Render.
 
 ## Run locally
 
