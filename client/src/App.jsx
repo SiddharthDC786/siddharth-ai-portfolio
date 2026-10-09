@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { profile } from './data/profileData'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import SeriesRail from './components/SeriesRail'
 import TourModal from './components/TourModal'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
@@ -15,16 +16,17 @@ function App() {
   const [tourOpen, setTourOpen] = useState(false)
 
   return (
-    <div className="app-shell">
+    <div className="app-shell cinematic-shell">
       <MotionEffects />
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <Navbar />
       <main>
         <Hero onOpenTour={() => setTourOpen(true)} />
+        <SeriesRail />
         <TourModal open={tourOpen} onClose={() => setTourOpen(false)} />
 
-        <section className="section" id="about">
+        <section className="section story-section" id="about">
           <div className="section-kicker">01 / ABOUT</div>
           <div className="about-grid refined-about-grid">
             <div>
@@ -51,7 +53,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section focus-section" id="current-focus">
+        <section className="section focus-section story-section" id="current-focus">
           <div className="section-heading-row">
             <div>
               <div className="section-kicker">02 / CURRENTLY</div>
@@ -93,7 +95,7 @@ function App() {
         <Projects />
         <Skills />
 
-        <section className="section" id="journey">
+        <section className="section story-section" id="journey">
           <div className="section-heading-row">
             <div>
               <div className="section-kicker">05 / JOURNEY</div>
@@ -115,7 +117,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section personal-section" id="beyond-code">
+        <section className="section personal-section story-section" id="beyond-code">
           <div className="section-heading-row">
             <div>
               <div className="section-kicker">06 / BEYOND CODE</div>
